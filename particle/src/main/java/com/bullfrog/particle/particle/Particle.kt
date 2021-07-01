@@ -1,11 +1,15 @@
 package com.bullfrog.particle.particle
 
-import android.graphics.Color
+import android.graphics.Canvas
+import android.graphics.Paint
+import com.bullfrog.particle.shape.Shape
 
-abstract class Particle {
+interface Particle {
 
-    abstract var color: Int
+    var color: Int
 
-    abstract var shape: Shape
+    var shape: Shape
+
+    fun draw(canvas: Canvas, paint: Paint)
 
 }

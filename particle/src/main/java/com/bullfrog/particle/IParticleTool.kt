@@ -6,7 +6,7 @@ import android.graphics.drawable.VectorDrawable
 import android.view.View
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import com.bullfrog.particle.particle.Shape
+import com.bullfrog.particle.shape.Shape
 
 interface IParticleTool {
 
@@ -14,11 +14,11 @@ interface IParticleTool {
 
     fun singleColor(r: Int, g: Int, b: Int, a: Int): IParticleTool
 
-    fun singleColor(@ColorRes color: Int)
+    fun singleColor(@ColorRes color: Int): IParticleTool
 
-    fun multiColor(colorArray: IntArray)
+    fun multiColor(colorArray: IntArray): IParticleTool
 
-    fun multiColor(colorList: List<Int>)
+    fun multiColor(colorList: List<Int>): IParticleTool
 
     fun colorFromBitmap(bitmap: Bitmap)
 
@@ -32,23 +32,13 @@ interface IParticleTool {
 
     fun circle()
 
-    fun hollowCircle()
-
     fun triangle()
-
-    fun hollowTriangle()
 
     fun square()
 
-    fun hollowSquare()
-
     fun rectangle()
 
-    fun hollowRectangle()
-
     fun pentacle()
-
-    fun hollowPentacle()
 
     fun shapeMix(vararg shape: Shape)
 
@@ -79,6 +69,8 @@ interface IParticleTool {
     fun anchor(x: Int, y: Int)
 
     fun bound(container: View)
+
+    fun num(num: Int)
 
     // region effect
 

@@ -1,37 +1,48 @@
 package com.bullfrog.particle
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.VectorDrawable
 import android.view.View
-import com.bullfrog.particle.particle.Shape
+import com.bullfrog.particle.shape.Shape
+import com.bullfrog.particle.util.getColorFromRGB
+import com.bullfrog.particle.view.ParticleView
 
-class ParticleTool : IParticleTool {
+internal class ParticleTool(context: Context) : IParticleTool {
 
-    private var colorList = mutableListOf(Color.BLACK, Color.LTGRAY, Color.WHITE)
-    private var shapeList = mutableListOf(Shape.CIRCLE)
-
-
+    private var particleView: ParticleView = ParticleView(context)
 
     override fun singleColor(r: Int, g: Int, b: Int, a: Int): IParticleTool {
-        TODO("Not yet implemented")
+        val color = getColorFromRGB(r, g, b, a)
+        particleView.colorMap[color] = 1f
+        return this
     }
 
-    override fun singleColor(color: Int) {
-        TODO("Not yet implemented")
+    override fun singleColor(color: Int): IParticleTool {
+        particleView.colorMap[color] = 1f
+        return this
     }
 
-    override fun multiColor(colorArray: IntArray) {
-        TODO("Not yet implemented")
+    override fun multiColor(colorArray: IntArray): IParticleTool {
+        val size = colorArray.size
+        colorArray.forEach {
+            particleView.colorMap[it] = 1f / size
+        }
+        return this
     }
 
-    override fun multiColor(colorList: List<Int>) {
-        TODO("Not yet implemented")
+    override fun multiColor(colorList: List<Int>): IParticleTool {
+        val size = colorList.size
+        colorList.forEach {
+            particleView.colorMap[it] = 1f / size
+        }
+        return this
     }
 
     override fun colorFromBitmap(bitmap: Bitmap) {
-        TODO("Not yet implemented")
+
     }
 
     override fun colorFromView(view: View) {
@@ -46,39 +57,23 @@ class ParticleTool : IParticleTool {
         TODO("Not yet implemented")
     }
 
-    override fun hollowCircle() {
-        TODO("Not yet implemented")
-    }
 
     override fun triangle() {
         TODO("Not yet implemented")
     }
 
-    override fun hollowTriangle() {
-        TODO("Not yet implemented")
-    }
 
     override fun square() {
         TODO("Not yet implemented")
     }
 
-    override fun hollowSquare() {
-        TODO("Not yet implemented")
-    }
 
     override fun rectangle() {
         TODO("Not yet implemented")
     }
 
-    override fun hollowRectangle() {
-        TODO("Not yet implemented")
-    }
 
     override fun pentacle() {
-        TODO("Not yet implemented")
-    }
-
-    override fun hollowPentacle() {
         TODO("Not yet implemented")
     }
 
@@ -127,6 +122,10 @@ class ParticleTool : IParticleTool {
     }
 
     override fun bound(container: View) {
+        TODO("Not yet implemented")
+    }
+
+    override fun num(num: Int) {
         TODO("Not yet implemented")
     }
 
