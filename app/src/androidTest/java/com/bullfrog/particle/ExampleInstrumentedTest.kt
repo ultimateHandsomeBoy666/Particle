@@ -1,7 +1,11 @@
 package com.bullfrog.particle
 
+import android.content.Context
+import android.graphics.BitmapFactory
+import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.bullfrog.particle.util.getColorFromBitmap
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,5 +24,15 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.bullfrog.particle", appContext.packageName)
+    }
+
+    private fun getAppContext(): Context {
+        return InstrumentationRegistry.getInstrumentation().targetContext
+    }
+
+    @Test
+    fun bitmap_color_sampling() {
+        val bitmap = BitmapFactory.decodeResource(getAppContext().resources, R.drawable.button)
+        Log.d("testbitmap", getColorFromBitmap(bitmap, 100).toString())
     }
 }

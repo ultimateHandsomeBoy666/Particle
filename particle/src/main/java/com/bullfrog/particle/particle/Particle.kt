@@ -2,7 +2,7 @@ package com.bullfrog.particle.particle
 
 import android.graphics.Canvas
 import android.graphics.Paint
-import com.bullfrog.particle.shape.Shape
+import com.bullfrog.particle.enum.Shape
 
 interface Particle {
 

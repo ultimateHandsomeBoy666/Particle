@@ -5,8 +5,9 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.bullfrog.particle.enum.Anim
 import com.bullfrog.particle.particle.Particle
-import com.bullfrog.particle.shape.Shape
+import com.bullfrog.particle.enum.Shape
 
 class ParticleView @JvmOverloads constructor(
     context: Context,
@@ -26,6 +27,20 @@ class ParticleView @JvmOverloads constructor(
     var shapeList = mutableListOf<Shape>()
 
     var particles: List<Particle> = mutableListOf()
+
+    var anim: Anim = Anim.EXPLOSION
+
+    var anchorX: Int = 0
+
+    var anchorY: Int = 0
+
+    var particleNum: Int = 50
+
+    var shimmer: Boolean = false
+
+    var keep: Boolean = false
+
+    var rigid: Boolean = false
 
     var paint = Paint()
 

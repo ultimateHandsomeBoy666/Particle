@@ -4,9 +4,10 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.VectorDrawable
 import android.view.View
+import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import com.bullfrog.particle.shape.Shape
+import com.bullfrog.particle.enum.Shape
 
 interface IParticleTool {
 
@@ -20,65 +21,65 @@ interface IParticleTool {
 
     fun multiColor(colorList: List<Int>): IParticleTool
 
-    fun colorFromBitmap(bitmap: Bitmap)
+    fun colorFromBitmap(bitmap: Bitmap, sampleNum: Int = 50): IParticleTool
 
-    fun colorFromView(view: View)
+    fun colorFromView(view: View, sampleNum: Int = 50): IParticleTool
 
-    fun colorFromDrawable(view: View)
+    fun colorFromDrawable(drawable: Drawable, sampleNum: Int = 50): IParticleTool
+
+    fun colorFromDrawable(@DrawableRes drawable: Int, sampleNum: Int = 50): IParticleTool
 
     // endregion
 
     // region particle shape
 
-    fun circle()
+    fun circle(): IParticleTool
 
-    fun triangle()
+    fun triangle(): IParticleTool
 
-    fun square()
+    fun square(): IParticleTool
 
-    fun rectangle()
+    fun rectangle(): IParticleTool
 
-    fun pentacle()
+    fun pentacle(): IParticleTool
 
-    fun shapeMix(vararg shape: Shape)
+    fun shapeMix(vararg shape: Shape): IParticleTool
 
-    fun shapePath(path: VectorDrawable)
+    fun shapePath(path: VectorDrawable): IParticleTool
 
-    fun shapeBitmap(bitmap: Bitmap)
+    fun shapeBitmap(bitmap: Bitmap): IParticleTool
 
-    fun shapeDrawable(drawable: Drawable)
+    fun shapeDrawable(drawable: Drawable): IParticleTool
 
-    fun shapeDrawable(@DrawableRes drawable: Int)
+    fun shapeDrawable(@DrawableRes drawable: Int): IParticleTool
 
     // endregion
 
     // region anim
 
-    fun explosion()
+    fun explosion(): IParticleTool
 
-    fun firework()
+    fun firework(): IParticleTool
 
-    fun fall()
+    fun fall(): IParticleTool
 
-    fun rise()
+    fun rise(): IParticleTool
 
     // endregion
 
-    fun anchor(view: View)
+    fun anchor(view: View): IParticleTool
 
-    fun anchor(x: Int, y: Int)
+    fun anchor(x: Int, y: Int): IParticleTool
 
-    fun bound(container: View)
-
-    fun num(num: Int)
+    fun num(num: Int): IParticleTool
 
     // region effect
 
-    fun shimmer()
+    fun shimmer(): IParticleTool
 
-    fun keep()
+    fun keep(): IParticleTool
 
-    fun rigid()
+    fun rigid(): IParticleTool
 
     // endregion
 }
