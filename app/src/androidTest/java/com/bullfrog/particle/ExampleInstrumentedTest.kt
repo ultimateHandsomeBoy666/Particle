@@ -33,6 +33,11 @@ class ExampleInstrumentedTest {
     @Test
     fun bitmap_color_sampling() {
         val bitmap = BitmapFactory.decodeResource(getAppContext().resources, R.drawable.button)
-        Log.d("testbitmap", getColorFromBitmap(bitmap, 100).toString())
+        val map = getColorFromBitmap(bitmap, 100)
+        var total = 0f
+        map.values.forEach {
+            total += it
+        }
+        Log.d("testbitmap", getColorFromBitmap(bitmap, 100).toString() + ", total = $total")
     }
 }

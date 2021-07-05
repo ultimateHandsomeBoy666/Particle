@@ -7,6 +7,7 @@ import android.graphics.Canvas
 import android.graphics.Interpolator
 import android.graphics.Paint
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import com.bullfrog.particle.animator.ExplosionAnimator
@@ -92,11 +93,14 @@ class ParticleView @JvmOverloads constructor(
         var cur = 0
         colorMap.onEachIndexed { index, entry ->
             val num = if (index == colorMap.size - 1) {
-                colorMap.size - cur
+                particleNum - cur
             } else {
                 (entry.value * particleNum).toInt()
+                Log.d("TestCount", "count = $cur, num = ${(entry.value * particleNum).toInt()}, index = $index, size = ${colorMap.size}")
             }
-            for (i in cur until cur + num) {
+            Log.d("TestCount", "cur + num = ${cur + num}")
+            for (i in cur until (cur + num)) {
+                Log.d("TestCount", "i = $i, cur + num = ${cur + num}")
                 particles[i].color = entry.key
             }
             cur += num
