@@ -67,6 +67,7 @@ class ParticleView @JvmOverloads constructor(
         configureNum()
         configureColor()
         configureAnim()
+        configureAnchor()
         pathAnimator?.start()
     }
 
@@ -119,5 +120,11 @@ class ParticleView @JvmOverloads constructor(
         }
     }
 
+    private fun configureAnchor() {
+        particles.forEach {
+            it.x = anchorX
+            it.y = anchorY
+        }
+    }
 
 }

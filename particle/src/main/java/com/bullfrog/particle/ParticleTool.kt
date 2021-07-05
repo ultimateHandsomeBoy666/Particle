@@ -151,8 +151,8 @@ internal class ParticleTool(
     }
 
     override fun anchor(view: View) : IParticleTool {
-        particleView.anchorX = (view.top + view.bottom) / 2
-        particleView.anchorY = (view.left + view.right) / 2
+        particleView.anchorX = (view.left + view.right) / 2
+        particleView.anchorY = (view.top + view.bottom) / 2
         return this
     }
 

@@ -1,6 +1,6 @@
 package com.bullfrog.particle.animator
 
-import android.view.animation.AccelerateDecelerateInterpolator
+import android.view.animation.DecelerateInterpolator
 import com.bullfrog.particle.particle.Particle
 import com.bullfrog.particle.path.LinearPathGenerator
 
@@ -21,7 +21,7 @@ class ExplosionAnimator(particles: List<Particle>) : PathAnimator() {
     private fun initAnimator() {
         animator.setFloatValues(0f, 1f)
         animator.duration = DEFAULT_DURATION
-        animator.interpolator = AccelerateDecelerateInterpolator()
+        animator.interpolator = DecelerateInterpolator()
         animator.addUpdateListener { it ->
             val curValue = it.animatedValue
             particles.forEach {
