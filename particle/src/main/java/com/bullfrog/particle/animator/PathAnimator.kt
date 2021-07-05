@@ -7,10 +7,7 @@ import com.bullfrog.particle.path.IPathGenerator
 abstract class PathAnimator {
 
     companion object {
-        // const val DEFAULT_DURATION = 2000L
-
-        // TODO 20000L only for test
-        const val DEFAULT_DURATION = 20000L
+         const val DEFAULT_DURATION = 2000L
     }
 
     lateinit var particles: List<Particle>

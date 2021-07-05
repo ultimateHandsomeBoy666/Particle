@@ -7,6 +7,10 @@ import com.bullfrog.particle.path.IPathGenerator
 
 interface Particle {
 
+    var initialX: Int
+
+    var initialY: Int
+
     var x: Int
 
     var y: Int

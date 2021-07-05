@@ -17,6 +17,10 @@ class CircleParticle : Particle {
 
     override var shape: Shape = Shape.CIRCLE
 
+    override var initialX: Int = 0
+
+    override var initialY: Int = 0
+
     override var x: Int = 0
 
     override var y: Int = 0

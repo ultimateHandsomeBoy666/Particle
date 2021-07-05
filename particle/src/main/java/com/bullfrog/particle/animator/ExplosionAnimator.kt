@@ -26,8 +26,8 @@ class ExplosionAnimator(particles: List<Particle>) : PathAnimator() {
             val curValue = it.animatedValue
             particles.forEach {
                 val coords = (it.pathGenerator as LinearPathGenerator).getCurrentCoord(curValue as Float)
-                it.x += coords.first
-                it.y += coords.second
+                it.x = it.initialX + coords.first
+                it.y = it.initialY + coords.second
             }
         }
     }

@@ -122,6 +122,8 @@ class ParticleView @JvmOverloads constructor(
 
     private fun configureAnchor() {
         particles.forEach {
+            it.initialX = anchorX
+            it.initialY = anchorY
             it.x = anchorX
             it.y = anchorY
         }
