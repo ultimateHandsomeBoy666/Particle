@@ -8,7 +8,7 @@ class LinearPathGenerator: IPathGenerator {
 
     var sin = Random.nextDouble(-1.0, 1.0)
 
-    var distance = Random.nextInt(300, 1000)
+    var distance = Random.nextInt(500, 800)
 
     override fun getCurrentCoord(progress: Float): Pair<Int, Int> {
         val coordX = distance * progress * cos

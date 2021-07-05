@@ -97,7 +97,7 @@ class ParticleView @JvmOverloads constructor(
                 particleNum - cur
             } else {
                 (entry.value * particleNum).toInt()
-                Log.d("TestCount", "count = $cur, num = ${(entry.value * particleNum).toInt()}, index = $index, size = ${colorMap.size}")
+                Log.d("TestCount", "cur = $cur, num = ${(entry.value * particleNum).toInt()}, index = $index, size = ${colorMap.size}")
             }
             Log.d("TestCount", "cur + num = ${cur + num}")
             for (i in cur until (cur + num)) {

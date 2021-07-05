@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
                 .circle()
                 .explosion()
                 .start()
+            button.visibility = View.GONE
         }
     }
 }
