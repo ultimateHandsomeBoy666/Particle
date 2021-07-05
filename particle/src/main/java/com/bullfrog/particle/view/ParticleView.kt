@@ -1,10 +1,16 @@
 package com.bullfrog.particle.view
 
+import android.animation.Animator
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Interpolator
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
+import com.bullfrog.particle.animator.ExplosionAnimator
+import com.bullfrog.particle.animator.PathAnimator
 import com.bullfrog.particle.enum.Anim
 import com.bullfrog.particle.particle.Particle
 import com.bullfrog.particle.enum.Shape
@@ -46,6 +52,8 @@ class ParticleView @JvmOverloads constructor(
 
     var paint = Paint()
 
+    var pathAnimator: PathAnimator? = null
+
     override fun onDraw(canvas: Canvas) {
         particles.forEach {
             it.draw(canvas, paint)
@@ -57,9 +65,8 @@ class ParticleView @JvmOverloads constructor(
         // TODO need invalidate?
         configureNum()
         configureColor()
-
-
-
+        configureAnim()
+        pathAnimator?.start()
     }
 
     private fun generateParticle(): Particle {
@@ -93,6 +100,18 @@ class ParticleView @JvmOverloads constructor(
                 particles[i].color = entry.key
             }
             cur += num
+        }
+    }
+
+    private fun configureAnim() {
+        when (anim) {
+            Anim.EXPLOSION -> {
+                pathAnimator = ExplosionAnimator(particles)
+            }
+            // TODO other path animator
+            else -> {
+                pathAnimator = ExplosionAnimator(particles)
+            }
         }
     }
 

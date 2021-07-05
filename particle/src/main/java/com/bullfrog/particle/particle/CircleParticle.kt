@@ -4,6 +4,8 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import com.bullfrog.particle.enum.Shape
+import com.bullfrog.particle.path.IPathGenerator
+import com.bullfrog.particle.path.LinearPathGenerator
 
 class CircleParticle : Particle {
 
@@ -15,13 +17,15 @@ class CircleParticle : Particle {
 
     override var shape: Shape = Shape.CIRCLE
 
+    override var x: Int = 0
+
+    override var y: Int = 0
+
+    override var pathGenerator: IPathGenerator? = null
+
     var radius: Float = CIRCLE_PARTICLE_INITIAL_RADIUS
 
-    var x: Float = 0f
-
-    var y: Float = 0f
-
     override fun draw(canvas: Canvas, paint: Paint) {
-        canvas.drawCircle(x, y, radius, paint)
+        canvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
     }
 }
