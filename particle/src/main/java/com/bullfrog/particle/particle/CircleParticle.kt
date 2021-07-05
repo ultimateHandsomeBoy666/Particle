@@ -26,6 +26,9 @@ class CircleParticle : Particle {
     var radius: Float = CIRCLE_PARTICLE_INITIAL_RADIUS
 
     override fun draw(canvas: Canvas, paint: Paint) {
+        canvas.save()
+        paint.color = color
         canvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
+        canvas.restore()
     }
 }

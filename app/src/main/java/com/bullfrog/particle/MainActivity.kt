@@ -26,10 +26,6 @@ class MainActivity : AppCompatActivity() {
                 .circle()
                 .explosion()
                 .start()
-            it.postDelayed({
-               button.visibility = View.GONE
-            }, 1000L)
-
         }
     }
 }
