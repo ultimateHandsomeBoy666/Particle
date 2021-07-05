@@ -56,6 +56,9 @@ class ParticleView @JvmOverloads constructor(
     fun start() {
         // TODO need invalidate?
         configureNum()
+        configureColor()
+
+
 
     }
 
@@ -79,6 +82,19 @@ class ParticleView @JvmOverloads constructor(
     }
 
     private fun configureColor() {
-        colorMap
+        var cur = 0
+        colorMap.onEachIndexed { index, entry ->
+            val num = if (index == colorMap.size - 1) {
+                colorMap.size - cur
+            } else {
+                (entry.value * particleNum).toInt()
+            }
+            for (i in cur until cur + num) {
+                particles[i].color = entry.key
+            }
+            cur += num
+        }
     }
+
+
 }
