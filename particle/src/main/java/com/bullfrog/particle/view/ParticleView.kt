@@ -8,6 +8,8 @@ import android.view.View
 import com.bullfrog.particle.enum.Anim
 import com.bullfrog.particle.particle.Particle
 import com.bullfrog.particle.enum.Shape
+import com.bullfrog.particle.particle.CircleParticle
+import kotlin.random.Random
 
 class ParticleView @JvmOverloads constructor(
     context: Context,
@@ -19,14 +21,14 @@ class ParticleView @JvmOverloads constructor(
     attributeSet,
     defStyleAttr,
     defStyleRes
-){
+) {
 
     // key: color int; value: color portion
     var colorMap = mutableMapOf<@androidx.annotation.ColorInt Int, Float>()
 
     var shapeList = mutableListOf<Shape>()
 
-    var particles: List<Particle> = mutableListOf()
+    var particles: MutableList<Particle> = mutableListOf()
 
     var anim: Anim = Anim.EXPLOSION
 
@@ -44,10 +46,39 @@ class ParticleView @JvmOverloads constructor(
 
     var paint = Paint()
 
-
     override fun onDraw(canvas: Canvas) {
         particles.forEach {
             it.draw(canvas, paint)
         }
+        invalidate()
+    }
+
+    fun start() {
+        // TODO need invalidate?
+        configureNum()
+
+    }
+
+    private fun generateParticle(): Particle {
+        val shape = shapeList[Random.nextInt(shapeList.size)]
+        return when (shape) {
+            Shape.CIRCLE -> {
+                CircleParticle()
+            }
+            // TODO other particles
+            else -> {
+                CircleParticle()
+            }
+        }
+    }
+
+    private fun configureNum() {
+        repeat(particleNum) {
+            particles.add(generateParticle())
+        }
+    }
+
+    private fun configureColor() {
+        colorMap
     }
 }

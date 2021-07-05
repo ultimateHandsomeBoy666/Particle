@@ -82,4 +82,6 @@ interface IParticleTool {
     fun rigid(): IParticleTool
 
     // endregion
+
+    fun start()
 }

@@ -181,4 +181,14 @@ internal class ParticleTool(
         particleView.rigid = true
         return this
     }
+
+    override fun start() {
+        addParticleView()
+        particleView.start()
+    }
+
+    private fun addParticleView() {
+        container.addView(particleView, ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT)
+    }
 }
