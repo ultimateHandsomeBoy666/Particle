@@ -15,25 +15,25 @@ import com.bullfrog.particle.util.getColorFromBitmap
 import com.bullfrog.particle.util.getColorFromRGB
 import com.bullfrog.particle.view.ParticleView
 
-internal class ParticleTool(
+internal class ParticleManager(
     private val context: Context,
     private val container: ViewGroup
-) : IParticleTool {
+) : IParticleManager {
 
     private var particleView: ParticleView = ParticleView(context)
 
-    override fun singleColor(r: Int, g: Int, b: Int, a: Int): IParticleTool {
+    override fun singleColor(r: Int, g: Int, b: Int, a: Int): IParticleManager {
         val color = getColorFromRGB(r, g, b, a)
         particleView.colorMap[color] = 1f
         return this
     }
 
-    override fun singleColor(color: Int): IParticleTool {
+    override fun singleColor(color: Int): IParticleManager {
         particleView.colorMap[color] = 1f
         return this
     }
 
-    override fun multiColor(colorArray: IntArray): IParticleTool {
+    override fun multiColor(colorArray: IntArray): IParticleManager {
         val size = colorArray.size
         colorArray.forEach {
             particleView.colorMap[it] = 1f / size
@@ -41,7 +41,7 @@ internal class ParticleTool(
         return this
     }
 
-    override fun multiColor(colorList: List<Int>): IParticleTool {
+    override fun multiColor(colorList: List<Int>): IParticleManager {
         val size = colorList.size
         colorList.forEach {
             particleView.colorMap[it] = 1f / size
@@ -49,24 +49,24 @@ internal class ParticleTool(
         return this
     }
 
-    override fun colorFromBitmap(bitmap: Bitmap, sampleNum: Int): IParticleTool {
+    override fun colorFromBitmap(bitmap: Bitmap, sampleNum: Int): IParticleManager {
         particleView.colorMap = getColorFromBitmap(bitmap, sampleNum)
         return this
     }
 
-    override fun colorFromView(view: View, sampleNum: Int): IParticleTool {
+    override fun colorFromView(view: View, sampleNum: Int): IParticleManager {
         val bitmap = view.drawToBitmap()
         particleView.colorMap = getColorFromBitmap(bitmap, sampleNum)
         return this
     }
 
-    override fun colorFromDrawable(drawable: Drawable, sampleNum: Int): IParticleTool {
+    override fun colorFromDrawable(drawable: Drawable, sampleNum: Int): IParticleManager {
         val bitmap = drawable.toBitmap()
         particleView.colorMap = getColorFromBitmap(bitmap, sampleNum)
         return this
     }
 
-    override fun colorFromDrawable(drawable: Int, sampleNum: Int): IParticleTool {
+    override fun colorFromDrawable(drawable: Int, sampleNum: Int): IParticleManager {
         val bitmap = ResourcesCompat.getDrawable(context.resources, drawable, null)?.toBitmap()
         bitmap?.let {
             particleView.colorMap = getColorFromBitmap(it, sampleNum)
@@ -74,110 +74,110 @@ internal class ParticleTool(
         return this
     }
 
-    override fun circle() : IParticleTool {
+    override fun circle() : IParticleManager {
         particleView.shapeList.add(Shape.CIRCLE)
         return this
     }
 
 
-    override fun triangle() : IParticleTool {
+    override fun triangle() : IParticleManager {
         particleView.shapeList.add(Shape.TRIANGLE)
         return this
     }
 
 
-    override fun square() : IParticleTool {
+    override fun square() : IParticleManager {
         particleView.shapeList.add(Shape.SQUARE)
         return this
     }
 
 
-    override fun rectangle() : IParticleTool {
+    override fun rectangle() : IParticleManager {
         particleView.shapeList.add(Shape.RECTANGLE)
         return this
     }
 
 
-    override fun pentacle() : IParticleTool {
+    override fun pentacle() : IParticleManager {
         particleView.shapeList.add(Shape.PENTACLE)
         return this
     }
 
-    override fun shapeMix(vararg shape: Shape) : IParticleTool {
+    override fun shapeMix(vararg shape: Shape) : IParticleManager {
         shape.forEach {
             particleView.shapeList.add(it)
         }
         return this
     }
 
-    override fun shapePath(path: VectorDrawable) : IParticleTool {
+    override fun shapePath(path: VectorDrawable) : IParticleManager {
         // TODO
         return this
     }
 
-    override fun shapeBitmap(bitmap: Bitmap) : IParticleTool {
+    override fun shapeBitmap(bitmap: Bitmap) : IParticleManager {
         // TODO
         return this
     }
 
-    override fun shapeDrawable(drawable: Drawable) : IParticleTool {
+    override fun shapeDrawable(drawable: Drawable) : IParticleManager {
         // TODO
         return this
     }
 
-    override fun shapeDrawable(drawable: Int) : IParticleTool{
+    override fun shapeDrawable(drawable: Int) : IParticleManager{
         // TODO
         return this
     }
 
-    override fun explosion() : IParticleTool {
+    override fun explosion() : IParticleManager {
         particleView.anim = Anim.EXPLOSION
         return this
     }
 
-    override fun firework() : IParticleTool {
+    override fun firework() : IParticleManager {
         particleView.anim = Anim.FIREWORK
         return this
     }
 
-    override fun fall() : IParticleTool{
+    override fun fall() : IParticleManager{
         particleView.anim = Anim.FALL
         return this
     }
 
-    override fun rise() : IParticleTool {
+    override fun rise() : IParticleManager {
         particleView.anim = Anim.RISE
         return this
     }
 
-    override fun anchor(view: View) : IParticleTool {
+    override fun anchor(view: View) : IParticleManager {
         particleView.anchorX = (view.left + view.right) / 2
         particleView.anchorY = (view.top + view.bottom) / 2
         return this
     }
 
-    override fun anchor(x: Int, y: Int) : IParticleTool {
+    override fun anchor(x: Int, y: Int) : IParticleManager {
         particleView.anchorX = x
         particleView.anchorY = y
         return this
     }
 
-    override fun num(num: Int) : IParticleTool {
+    override fun num(num: Int) : IParticleManager {
         particleView.particleNum = num
         return this
     }
 
-    override fun shimmer(): IParticleTool {
+    override fun shimmer(): IParticleManager {
         particleView.shimmer = true
         return this
     }
 
-    override fun keep(): IParticleTool {
+    override fun keep(): IParticleManager {
         particleView.keep = true
         return this
     }
 
-    override fun rigid() : IParticleTool {
+    override fun rigid() : IParticleManager {
         particleView.rigid = true
         return this
     }

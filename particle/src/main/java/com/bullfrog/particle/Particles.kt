@@ -6,8 +6,8 @@ import android.view.ViewGroup
 class Particles {
 
     companion object {
-        fun with(context: Context, container: ViewGroup): IParticleTool {
-            return ParticleTool(context, container)
+        fun with(context: Context, container: ViewGroup): IParticleManager {
+            return ParticleManager(context, container)
         }
     }
 }
