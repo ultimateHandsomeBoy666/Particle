@@ -11,6 +11,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.drawToBitmap
 import com.bullfrog.particle.enum.Anim
 import com.bullfrog.particle.enum.Shape
+import com.bullfrog.particle.path.IPathGenerator
 import com.bullfrog.particle.util.getColorFromBitmap
 import com.bullfrog.particle.util.getColorFromRGB
 import com.bullfrog.particle.view.ParticleView
@@ -22,28 +23,9 @@ internal class ParticleManager(
 
     private var particleView: ParticleView = ParticleView(context)
 
-    override fun singleColor(r: Int, g: Int, b: Int, a: Int): IParticleManager {
-        val color = getColorFromRGB(r, g, b, a)
-        particleView.colorMap[color] = 1f
-        return this
-    }
-
-    override fun singleColor(color: Int): IParticleManager {
-        particleView.colorMap[color] = 1f
-        return this
-    }
-
-    override fun multiColor(colorArray: IntArray): IParticleManager {
-        val size = colorArray.size
-        colorArray.forEach {
-            particleView.colorMap[it] = 1f / size
-        }
-        return this
-    }
-
-    override fun multiColor(colorList: List<Int>): IParticleManager {
-        val size = colorList.size
-        colorList.forEach {
+    override fun color(vararg colors: Int): IParticleManager {
+        val size = colors.size
+        colors.forEach {
             particleView.colorMap[it] = 1f / size
         }
         return this
@@ -74,79 +56,40 @@ internal class ParticleManager(
         return this
     }
 
-    override fun circle() : IParticleManager {
-        particleView.shapeList.add(Shape.CIRCLE)
-        return this
-    }
-
-
-    override fun triangle() : IParticleManager {
-        particleView.shapeList.add(Shape.TRIANGLE)
-        return this
-    }
-
-
-    override fun square() : IParticleManager {
-        particleView.shapeList.add(Shape.SQUARE)
-        return this
-    }
-
-
-    override fun rectangle() : IParticleManager {
-        particleView.shapeList.add(Shape.RECTANGLE)
-        return this
-    }
-
-
-    override fun pentacle() : IParticleManager {
-        particleView.shapeList.add(Shape.PENTACLE)
-        return this
-    }
-
-    override fun shapeMix(vararg shape: Shape) : IParticleManager {
-        shape.forEach {
+    override fun shape(vararg shapes: Shape): IParticleManager {
+        shapes.forEach {
             particleView.shapeList.add(it)
         }
         return this
     }
 
-    override fun shapePath(path: VectorDrawable) : IParticleManager {
+    override fun shapePath(vararg paths: VectorDrawable) : IParticleManager {
         // TODO
         return this
     }
 
-    override fun shapeBitmap(bitmap: Bitmap) : IParticleManager {
+    override fun shapeBitmap(vararg bitmaps: Bitmap) : IParticleManager {
         // TODO
         return this
     }
 
-    override fun shapeDrawable(drawable: Drawable) : IParticleManager {
+    override fun shapeDrawable(vararg drawables: Drawable) : IParticleManager {
         // TODO
         return this
     }
 
-    override fun shapeDrawable(drawable: Int) : IParticleManager{
+    override fun shapeDrawable(vararg drawables: Int) : IParticleManager{
         // TODO
         return this
     }
 
-    override fun explosion() : IParticleManager {
-        particleView.anim = Anim.EXPLOSION
+    override fun anim(anim: Anim): IParticleManager {
+        particleView.anim = anim
         return this
     }
 
-    override fun firework() : IParticleManager {
-        particleView.anim = Anim.FIREWORK
-        return this
-    }
-
-    override fun fall() : IParticleManager{
-        particleView.anim = Anim.FALL
-        return this
-    }
-
-    override fun rise() : IParticleManager {
-        particleView.anim = Anim.RISE
+    override fun anim(path: IPathGenerator): IParticleManager {
+        // TODO
         return this
     }
 
@@ -162,7 +105,7 @@ internal class ParticleManager(
         return this
     }
 
-    override fun num(num: Int) : IParticleManager {
+    override fun particleNum(num: Int) : IParticleManager {
         particleView.particleNum = num
         return this
     }

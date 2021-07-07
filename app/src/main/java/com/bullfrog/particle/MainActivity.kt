@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.bullfrog.particle.enum.Anim
+import com.bullfrog.particle.enum.Shape
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,10 +23,10 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             Particles.with(this, container)
                 .colorFromView(button)
-                .num(100)
+                .particleNum(100)
                 .anchor(it)
-                .circle()
-                .explosion()
+                .shape(Shape.CIRCLE)
+                .anim(Anim.EXPLOSION)
                 .start()
             button.visibility = View.GONE
         }

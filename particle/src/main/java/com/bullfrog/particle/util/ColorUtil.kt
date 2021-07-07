@@ -39,5 +39,3 @@ fun getColorFromBitmap(bitmap: Bitmap?, sampleNum: Int): MutableMap<Int, Float> 
 
     return map
 }
-
-// recursive sampling

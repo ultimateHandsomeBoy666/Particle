@@ -4,21 +4,18 @@ import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.VectorDrawable
 import android.view.View
+import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
+import com.bullfrog.particle.enum.Anim
 import com.bullfrog.particle.enum.Shape
+import com.bullfrog.particle.path.IPathGenerator
 
 interface IParticleManager {
 
     // region particle color
 
-    fun singleColor(r: Int, g: Int, b: Int, a: Int): IParticleManager
-
-    fun singleColor(@ColorRes color: Int): IParticleManager
-
-    fun multiColor(colorArray: IntArray): IParticleManager
-
-    fun multiColor(colorList: List<Int>): IParticleManager
+    fun color(@ColorInt vararg colors: Int): IParticleManager
 
     fun colorFromBitmap(bitmap: Bitmap, sampleNum: Int = 50): IParticleManager
 
@@ -32,37 +29,23 @@ interface IParticleManager {
 
     // region particle shape
 
-    fun circle(): IParticleManager
+    fun shape(vararg shapes: Shape): IParticleManager
 
-    fun triangle(): IParticleManager
+    fun shapePath(vararg paths: VectorDrawable): IParticleManager
 
-    fun square(): IParticleManager
+    fun shapeBitmap(vararg bitmaps: Bitmap): IParticleManager
 
-    fun rectangle(): IParticleManager
+    fun shapeDrawable(vararg drawables: Drawable): IParticleManager
 
-    fun pentacle(): IParticleManager
-
-    fun shapeMix(vararg shape: Shape): IParticleManager
-
-    fun shapePath(path: VectorDrawable): IParticleManager
-
-    fun shapeBitmap(bitmap: Bitmap): IParticleManager
-
-    fun shapeDrawable(drawable: Drawable): IParticleManager
-
-    fun shapeDrawable(@DrawableRes drawable: Int): IParticleManager
+    fun shapeDrawable(@DrawableRes vararg drawables: Int): IParticleManager
 
     // endregion
 
     // region anim
 
-    fun explosion(): IParticleManager
+    fun anim(anim: Anim): IParticleManager
 
-    fun firework(): IParticleManager
-
-    fun fall(): IParticleManager
-
-    fun rise(): IParticleManager
+    fun anim(path: IPathGenerator): IParticleManager
 
     // endregion
 
@@ -70,7 +53,7 @@ interface IParticleManager {
 
     fun anchor(x: Int, y: Int): IParticleManager
 
-    fun num(num: Int): IParticleManager
+    fun particleNum(num: Int): IParticleManager
 
     // region effect
 
