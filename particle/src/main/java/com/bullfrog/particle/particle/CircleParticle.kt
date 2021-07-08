@@ -28,10 +28,10 @@ class CircleParticle : Particle {
 
     override var pathGenerator: IPathGenerator? = null
 
-     var radius: Float = CIRCLE_PARTICLE_INITIAL_RADIUS
+     // var radius: Float = CIRCLE_PARTICLE_INITIAL_RADIUS
 
     // TODO need random radius if explosion, but it should be able to be configured by user
-    // var radius = Random.nextInt(8).toFloat()
+    var radius = Random.nextInt(8).toFloat()
 
 
     override fun draw(canvas: Canvas, paint: Paint) {

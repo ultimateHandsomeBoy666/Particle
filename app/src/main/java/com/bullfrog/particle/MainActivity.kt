@@ -34,10 +34,10 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             particleManager = Particles.with(this, container)
                 .colorFromView(button)
-                .particleNum(100)
+                .particleNum(500)
                 .anchor(it)
                 .shape(Shape.CIRCLE)
-                .anim(ParticleAnimation { createPathGenerator() })
+                .anim(ParticleAnimation.EXPLOSION)
             particleManager!!.start()
             button.visibility = View.GONE
         }

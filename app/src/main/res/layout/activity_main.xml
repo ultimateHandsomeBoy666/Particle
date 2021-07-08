@@ -14,7 +14,7 @@
         android:layout_height="100dp"
         android:text="Hello World!"
         android:gravity="center"
-        android:background="@drawable/ic_launcher_background"
+        android:background="@drawable/bg_color"
         app:layout_constraintDimensionRatio="2:1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
