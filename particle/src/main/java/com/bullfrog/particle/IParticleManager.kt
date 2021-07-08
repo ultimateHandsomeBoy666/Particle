@@ -5,11 +5,9 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.VectorDrawable
 import android.view.View
 import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import com.bullfrog.particle.enum.Anim
 import com.bullfrog.particle.enum.Shape
-import com.bullfrog.particle.path.IPathGenerator
+import com.bullfrog.particle.animation.ParticleAnimation
 
 interface IParticleManager {
 
@@ -43,9 +41,7 @@ interface IParticleManager {
 
     // region anim
 
-    fun anim(anim: Anim): IParticleManager
-
-    fun anim(path: IPathGenerator): IParticleManager
+    fun anim(anim: ParticleAnimation): IParticleManager
 
     // endregion
 

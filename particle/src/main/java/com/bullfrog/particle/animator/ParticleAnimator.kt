@@ -1,20 +1,30 @@
 package com.bullfrog.particle.animator
 
+import android.animation.ValueAnimator
 import android.view.animation.DecelerateInterpolator
 import com.bullfrog.particle.particle.Particle
 import com.bullfrog.particle.path.LinearPathGenerator
+import com.bullfrog.particle.animation.ParticleAnimation
 
-class ExplosionAnimator(particles: List<Particle>) : PathAnimator() {
+class ParticleAnimator(
+    private val particles: List<Particle>,
+    private val animation: ParticleAnimation
+) {
+
+    companion object {
+        const val DEFAULT_DURATION = 2000L
+    }
+
+    private var animator: ValueAnimator = ValueAnimator()
 
     init {
-        initParticle(particles)
         initPathGenerators()
         initAnimator()
     }
 
     private fun initPathGenerators() {
         particles.forEach {
-            it.pathGenerator = LinearPathGenerator()
+            it.pathGenerator = animation.createPathGenerator()
         }
     }
 
@@ -32,7 +42,7 @@ class ExplosionAnimator(particles: List<Particle>) : PathAnimator() {
         }
     }
 
-    override fun start() {
+    fun start() {
         animator.start()
     }
 }

@@ -1,21 +1,17 @@
 package com.bullfrog.particle.view
 
-import android.animation.Animator
-import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Interpolator
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
-import android.view.animation.AccelerateDecelerateInterpolator
-import com.bullfrog.particle.animator.ExplosionAnimator
-import com.bullfrog.particle.animator.PathAnimator
-import com.bullfrog.particle.enum.Anim
+import com.bullfrog.particle.animator.ParticleAnimator
 import com.bullfrog.particle.particle.Particle
 import com.bullfrog.particle.enum.Shape
 import com.bullfrog.particle.particle.CircleParticle
+import com.bullfrog.particle.animation.ParticleAnimation
+import com.bullfrog.particle.path.LinearPathGenerator
 import kotlin.random.Random
 
 class ParticleView @JvmOverloads constructor(
@@ -37,7 +33,7 @@ class ParticleView @JvmOverloads constructor(
 
     var particles: MutableList<Particle> = mutableListOf()
 
-    var anim: Anim = Anim.EXPLOSION
+    var anim: ParticleAnimation = ParticleAnimation.EXPLOSION
 
     var anchorX: Int = 0
 
@@ -53,7 +49,7 @@ class ParticleView @JvmOverloads constructor(
 
     var paint = Paint()
 
-    var pathAnimator: PathAnimator? = null
+    var pathAnimator: ParticleAnimator? = null
 
     override fun onDraw(canvas: Canvas) {
         particles.forEach {
@@ -109,15 +105,7 @@ class ParticleView @JvmOverloads constructor(
     }
 
     private fun configureAnim() {
-        when (anim) {
-            Anim.EXPLOSION -> {
-                pathAnimator = ExplosionAnimator(particles)
-            }
-            // TODO other path animator
-            else -> {
-                pathAnimator = ExplosionAnimator(particles)
-            }
-        }
+        pathAnimator = ParticleAnimator(particles, anim)
     }
 
     private fun configureAnchor() {

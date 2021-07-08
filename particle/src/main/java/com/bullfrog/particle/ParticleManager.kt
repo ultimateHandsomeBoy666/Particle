@@ -9,12 +9,10 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.drawToBitmap
-import com.bullfrog.particle.enum.Anim
 import com.bullfrog.particle.enum.Shape
-import com.bullfrog.particle.path.IPathGenerator
 import com.bullfrog.particle.util.getColorFromBitmap
-import com.bullfrog.particle.util.getColorFromRGB
 import com.bullfrog.particle.view.ParticleView
+import com.bullfrog.particle.animation.ParticleAnimation
 
 internal class ParticleManager(
     private val context: Context,
@@ -83,13 +81,8 @@ internal class ParticleManager(
         return this
     }
 
-    override fun anim(anim: Anim): IParticleManager {
+    override fun anim(anim: ParticleAnimation): IParticleManager {
         particleView.anim = anim
-        return this
-    }
-
-    override fun anim(path: IPathGenerator): IParticleManager {
-        // TODO
         return this
     }
 

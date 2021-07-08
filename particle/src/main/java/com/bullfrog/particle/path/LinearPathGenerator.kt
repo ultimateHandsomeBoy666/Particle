@@ -2,7 +2,7 @@ package com.bullfrog.particle.path
 
 import kotlin.random.Random
 
-class LinearPathGenerator: IPathGenerator {
+open class LinearPathGenerator: IPathGenerator {
 
     var cos = Random.nextDouble(-1.0, 1.0)
 
