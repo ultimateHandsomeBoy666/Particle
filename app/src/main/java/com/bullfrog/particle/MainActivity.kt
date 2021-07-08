@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.enum.Shape
@@ -17,12 +18,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var button: TextView
 
+    private lateinit var resetButton: Button
+
     private lateinit var container: ViewGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         button = findViewById(R.id.button)
+        resetButton = findViewById(R.id.reset_button)
         container = findViewById(R.id.container)
 
         button.setOnClickListener {
@@ -34,6 +38,10 @@ class MainActivity : AppCompatActivity() {
                 .anim(ParticleAnimation { createPathGenerator() })
                 .start()
             button.visibility = View.GONE
+        }
+
+        resetButton.setOnClickListener {
+            button.visibility = View.VISIBLE
         }
     }
 
