@@ -11,7 +11,7 @@ import kotlin.random.Random
 class CircleParticle : Particle {
 
     companion object {
-        const val CIRCLE_PARTICLE_INITIAL_RADIUS = 12f
+        const val CIRCLE_PARTICLE_INITIAL_RADIUS = 8f
     }
 
     override var color: Int = Color.GREEN

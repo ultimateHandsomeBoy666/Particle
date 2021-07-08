@@ -123,8 +123,16 @@ internal class ParticleManager(
         particleView.start()
     }
 
+    override fun stop() {
+        removeParticleView()
+    }
+
     private fun addParticleView() {
         container.addView(particleView, ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT)
+    }
+
+    private fun removeParticleView() {
+        container.removeView(particleView)
     }
 }

@@ -62,4 +62,6 @@ interface IParticleManager {
     // endregion
 
     fun start()
+
+    fun stop()
 }

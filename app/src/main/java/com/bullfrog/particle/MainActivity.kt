@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var container: ViewGroup
 
+    private var particleManager: IParticleManager? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,18 +32,19 @@ class MainActivity : AppCompatActivity() {
         container = findViewById(R.id.container)
 
         button.setOnClickListener {
-            Particles.with(this, container)
+            particleManager = Particles.with(this, container)
                 .colorFromView(button)
                 .particleNum(100)
                 .anchor(it)
                 .shape(Shape.CIRCLE)
                 .anim(ParticleAnimation { createPathGenerator() })
-                .start()
+            particleManager!!.start()
             button.visibility = View.GONE
         }
 
         resetButton.setOnClickListener {
             button.visibility = View.VISIBLE
+            particleManager?.stop()
         }
     }
 
