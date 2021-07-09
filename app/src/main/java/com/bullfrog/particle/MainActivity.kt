@@ -1,10 +1,14 @@
 package com.bullfrog.particle
 
+import android.animation.Animator
+import android.animation.TypeEvaluator
+import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
 import android.widget.Button
 import android.widget.TextView
 import com.bullfrog.particle.animation.ParticleAnimation
@@ -34,10 +38,14 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             particleManager = Particles.with(this, container)
                 .colorFromView(button)
-                .particleNum(500)
+                .particleNum(1000)
                 .anchor(it)
                 .shape(Shape.CIRCLE)
-                .anim(ParticleAnimation.EXPLOSION)
+                .anim(ParticleAnimation.with({
+                    createPathGenerator()
+                }, {
+                    createAnimator()
+                }))
             particleManager!!.start()
             button.visibility = View.GONE
         }
@@ -52,12 +60,19 @@ class MainActivity : AppCompatActivity() {
         return object : LinearPathGenerator() {
 
             override fun getCurrentCoord(progress: Float): Pair<Int, Int> {
-                val originalX = distance * progress
-                val originalY = 100 * sin(originalX / 20)
-                val x = originalX * cos - originalY * sin
-                val y = originalX * sin + originalY * cos
-                return Pair(x.toInt(), y.toInt())
+                val t = distance * progress
+                val x =  16 * sin(t).pow(3)
+                val y = 13 * cos(t) - 5 * cos(2 * t) - 2 * cos(3 * t) - cos(4 * t)
+                return Pair(30 * x.toInt(), 30 * y.toInt())
             }
         }
+    }
+
+    private fun createAnimator(): ValueAnimator {
+        val animator = ValueAnimator.ofInt(0, 1)
+        animator.repeatCount = -1
+        animator.repeatMode = ValueAnimator.REVERSE
+        animator.duration = 2000L
+        return animator
     }
 }
