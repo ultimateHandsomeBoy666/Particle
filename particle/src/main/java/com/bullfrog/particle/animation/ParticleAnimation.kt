@@ -13,9 +13,9 @@ class ParticleAnimation private constructor(
 
     companion object {
 
-        const val DEFAULT_DURATION = 2000L
+        private const val DEFAULT_DURATION = 2000L
 
-        val DEFAULT_ANIMATOR_LAMBDA = {
+        private val DEFAULT_ANIMATOR_LAMBDA = {
             val animator = ValueAnimator
             .ofInt(0, 1)
             .setDuration(DEFAULT_DURATION)

@@ -28,6 +28,15 @@ internal class ParticleView @JvmOverloads constructor(
     defStyleRes
 ) {
 
+    companion object {
+
+        private const val DEFAULT_PARTICLE_NUM = 50
+        private const val DEFAULT_SIZE = 10
+        private val DEFAULT_RANGE = 0..10
+
+
+    }
+
     // key: color int; value: color portion
     var colorMap = mutableMapOf<@androidx.annotation.ColorInt Int, Float>()
 
@@ -41,19 +50,19 @@ internal class ParticleView @JvmOverloads constructor(
 
     var anchorY: Int = 0
 
-    var particleNum: Int = 50
+    var particleNum: Int = DEFAULT_PARTICLE_NUM
 
     var shimmer: Boolean = false
 
     var rotation: Rotation = Rotation.ROTATION_NONE
 
-    var widthSize: Int = 10
+    var widthSize: Int = DEFAULT_SIZE
 
-    var heightSize: Int = 10
+    var heightSize: Int = DEFAULT_SIZE
 
-    var widthSizeRange: IntRange = 0..10
+    var widthSizeRange: IntRange = DEFAULT_RANGE
 
-    var heightSizeRange: IntRange = 0..10
+    var heightSizeRange: IntRange = DEFAULT_RANGE
 
     var randomSize = false
 

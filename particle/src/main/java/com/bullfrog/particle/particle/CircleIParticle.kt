@@ -9,10 +9,6 @@ import kotlin.random.Random
 
 class CircleIParticle : IParticle {
 
-    companion object {
-        const val CIRCLE_PARTICLE_INITIAL_RADIUS = 8f
-    }
-
     override var configuration: ParticleConfiguration? = null
 
     override var initialX: Int = 0
@@ -25,9 +21,6 @@ class CircleIParticle : IParticle {
 
     override var pathGenerator: IPathGenerator? = null
 
-     // var radius: Float = CIRCLE_PARTICLE_INITIAL_RADIUS
-
-    // TODO need random radius if explosion, but it should be able to be configured by user
     var radius = Random.nextInt(8).toFloat()
 
 
