@@ -7,11 +7,10 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import com.bullfrog.particle.animator.ParticleAnimator
-import com.bullfrog.particle.particle.Particle
+import com.bullfrog.particle.particle.IParticle
 import com.bullfrog.particle.enum.Shape
-import com.bullfrog.particle.particle.CircleParticle
+import com.bullfrog.particle.particle.CircleIParticle
 import com.bullfrog.particle.animation.ParticleAnimation
-import com.bullfrog.particle.path.LinearPathGenerator
 import kotlin.random.Random
 
 class ParticleView @JvmOverloads constructor(
@@ -31,7 +30,7 @@ class ParticleView @JvmOverloads constructor(
 
     var shapeList = mutableListOf<Shape>()
 
-    var particles: MutableList<Particle> = mutableListOf()
+    var mIParticles: MutableList<IParticle> = mutableListOf()
 
     var anim: ParticleAnimation = ParticleAnimation.EXPLOSION
 
@@ -52,7 +51,7 @@ class ParticleView @JvmOverloads constructor(
     var pathAnimator: ParticleAnimator? = null
 
     override fun onDraw(canvas: Canvas) {
-        particles.forEach {
+        mIParticles.forEach {
             it.draw(canvas, paint)
         }
         invalidate()
@@ -67,22 +66,22 @@ class ParticleView @JvmOverloads constructor(
         pathAnimator?.start()
     }
 
-    private fun generateParticle(): Particle {
+    private fun generateParticle(): IParticle {
         val shape = shapeList[Random.nextInt(shapeList.size)]
         return when (shape) {
             Shape.CIRCLE -> {
-                CircleParticle()
+                CircleIParticle()
             }
             // TODO other particles
             else -> {
-                CircleParticle()
+                CircleIParticle()
             }
         }
     }
 
     private fun configureNum() {
         repeat(particleNum) {
-            particles.add(generateParticle())
+            mIParticles.add(generateParticle())
         }
     }
 
@@ -98,18 +97,18 @@ class ParticleView @JvmOverloads constructor(
             Log.d("TestCount", "cur + num = ${cur + num}")
             for (i in cur until (cur + num)) {
                 Log.d("TestCount", "i = $i, cur + num = ${cur + num}")
-                particles[i].color = entry.key
+                mIParticles[i].color = entry.key
             }
             cur += num
         }
     }
 
     private fun configureAnim() {
-        pathAnimator = ParticleAnimator(particles, anim)
+        pathAnimator = ParticleAnimator(mIParticles, anim)
     }
 
     private fun configureAnchor() {
-        particles.forEach {
+        mIParticles.forEach {
             it.initialX = anchorX
             it.initialY = anchorY
             it.x = anchorX

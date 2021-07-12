@@ -5,10 +5,9 @@ import android.graphics.Color
 import android.graphics.Paint
 import com.bullfrog.particle.enum.Shape
 import com.bullfrog.particle.path.IPathGenerator
-import com.bullfrog.particle.path.LinearPathGenerator
 import kotlin.random.Random
 
-class CircleParticle : Particle {
+class CircleIParticle : IParticle {
 
     companion object {
         const val CIRCLE_PARTICLE_INITIAL_RADIUS = 8f

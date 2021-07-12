@@ -1,16 +1,12 @@
 package com.bullfrog.particle.animator
 
 import android.animation.ValueAnimator
-import android.view.animation.DecelerateInterpolator
-import com.bullfrog.particle.particle.Particle
-import com.bullfrog.particle.path.LinearPathGenerator
+import com.bullfrog.particle.particle.IParticle
 import com.bullfrog.particle.animation.ParticleAnimation
-import java.lang.Exception
-import java.lang.RuntimeException
 
 class ParticleAnimator(
-    private val particles: List<Particle>,
-    private val animation: ParticleAnimation
+        private val IParticles: List<IParticle>,
+        private val animation: ParticleAnimation
 ) {
 
     private var animator: ValueAnimator? = null
@@ -21,7 +17,7 @@ class ParticleAnimator(
     }
 
     private fun initPathGenerators() {
-        particles.forEach {
+        IParticles.forEach {
             it.pathGenerator = animation.createPathGenerator()
         }
     }
@@ -30,7 +26,7 @@ class ParticleAnimator(
         animator = animation.createAnimator()
         animator!!.addUpdateListener { it ->
             val progress = it.animatedFraction
-            particles.forEach {
+            IParticles.forEach {
                 val coords = it.pathGenerator?.getCurrentCoord(progress)
                 it.x = it.initialX + (coords?.first ?: 0)
                 it.y = it.initialY + (coords?.second ?: 0)

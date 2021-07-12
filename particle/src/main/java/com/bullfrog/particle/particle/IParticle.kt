@@ -5,7 +5,7 @@ import android.graphics.Paint
 import com.bullfrog.particle.enum.Shape
 import com.bullfrog.particle.path.IPathGenerator
 
-interface Particle {
+interface IParticle {
 
     var initialX: Int
 
