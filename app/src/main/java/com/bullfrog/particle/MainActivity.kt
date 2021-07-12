@@ -11,8 +11,10 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.enum.Shape
+import com.bullfrog.particle.particle.Rotation
 import com.bullfrog.particle.path.IPathGenerator
 import com.bullfrog.particle.path.LinearPathGenerator
 import kotlin.math.*

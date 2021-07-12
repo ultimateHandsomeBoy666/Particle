@@ -13,9 +13,7 @@ class CircleIParticle : IParticle {
         const val CIRCLE_PARTICLE_INITIAL_RADIUS = 8f
     }
 
-    override var color: Int = Color.GREEN
-
-    override var shape: Shape = Shape.CIRCLE
+    override var configuration: ParticleConfiguration? = null
 
     override var initialX: Int = 0
 
@@ -35,7 +33,7 @@ class CircleIParticle : IParticle {
 
     override fun draw(canvas: Canvas, paint: Paint) {
         canvas.save()
-        paint.color = color
+        paint.color = Color.GREEN
         canvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
         canvas.restore()
     }

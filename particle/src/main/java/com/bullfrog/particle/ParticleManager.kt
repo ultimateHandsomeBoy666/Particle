@@ -13,6 +13,7 @@ import com.bullfrog.particle.enum.Shape
 import com.bullfrog.particle.util.getColorFromBitmap
 import com.bullfrog.particle.view.ParticleView
 import com.bullfrog.particle.animation.ParticleAnimation
+import com.bullfrog.particle.particle.Rotation
 
 internal class ParticleManager(
     private val context: Context,
@@ -103,6 +104,25 @@ internal class ParticleManager(
         return this
     }
 
+    override fun rotation(rotation: Rotation): IParticleManager {
+        particleView.rotation = rotation
+        return this
+    }
+
+    override fun size(width: Int, height: Int): IParticleManager {
+        particleView.widthSize = width
+        particleView.heightSize = height
+        particleView.randomSize = false
+        return this
+    }
+
+    override fun size(widthFrom: Int, widthTo: Int, heightFrom: Int, heightTo: Int): IParticleManager {
+        particleView.randomSize = true
+        particleView.widthSizeRange = IntRange(widthFrom, widthTo)
+        particleView.heightSizeRange = IntRange(heightFrom, heightTo)
+        return this
+    }
+
     override fun shimmer(): IParticleManager {
         particleView.shimmer = true
         return this
@@ -110,11 +130,6 @@ internal class ParticleManager(
 
     override fun keep(): IParticleManager {
         particleView.keep = true
-        return this
-    }
-
-    override fun rigid() : IParticleManager {
-        particleView.rigid = true
         return this
     }
 

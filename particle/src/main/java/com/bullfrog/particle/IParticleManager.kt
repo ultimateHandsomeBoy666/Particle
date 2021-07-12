@@ -8,6 +8,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import com.bullfrog.particle.enum.Shape
 import com.bullfrog.particle.animation.ParticleAnimation
+import com.bullfrog.particle.particle.Rotation
 
 interface IParticleManager {
 
@@ -53,11 +54,15 @@ interface IParticleManager {
 
     // region effect
 
+    fun rotation(rotation: Rotation): IParticleManager
+
+    fun size(width: Int, height: Int): IParticleManager
+
+    fun size(widthFrom: Int, widthTo: Int, heightFrom: Int, heightTo: Int): IParticleManager
+
     fun shimmer(): IParticleManager
 
     fun keep(): IParticleManager
-
-    fun rigid(): IParticleManager
 
     // endregion
 

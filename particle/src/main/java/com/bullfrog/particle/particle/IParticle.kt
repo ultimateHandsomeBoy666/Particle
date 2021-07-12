@@ -2,6 +2,7 @@ package com.bullfrog.particle.particle
 
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.util.Size
 import com.bullfrog.particle.enum.Shape
 import com.bullfrog.particle.path.IPathGenerator
 
@@ -15,9 +16,7 @@ interface IParticle {
 
     var y: Int
 
-    var color: Int
-
-    var shape: Shape
+    var configuration: ParticleConfiguration?
 
     var pathGenerator: IPathGenerator?
 
