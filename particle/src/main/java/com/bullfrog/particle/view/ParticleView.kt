@@ -34,7 +34,6 @@ internal class ParticleView @JvmOverloads constructor(
         private const val DEFAULT_SIZE = 10
         private val DEFAULT_RANGE = 0..10
 
-
     }
 
     // key: color int; value: color portion
@@ -64,11 +63,11 @@ internal class ParticleView @JvmOverloads constructor(
 
     var heightSizeRange: IntRange = DEFAULT_RANGE
 
-    var randomSize = false
+    var randomSize: Boolean = false
 
     var keep: Boolean = false
 
-    var paint = Paint()
+    var paint: Paint = Paint()
 
     var pathAnimator: ParticleAnimator? = null
 
