@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             particleManager = Particles.with(this, container)
                 .colorFromView(button)
-                .particleNum(1000)
+                .particleNum(100)
                 .anchor(it)
                 .shape(Shape.CIRCLE)
                 .anim(ParticleAnimation.with({

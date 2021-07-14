@@ -3,6 +3,7 @@ package com.bullfrog.particle.view
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.os.Debug
 import android.util.AttributeSet
 import android.util.Log
 import android.util.Size
