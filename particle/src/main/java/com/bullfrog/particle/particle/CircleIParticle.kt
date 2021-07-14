@@ -39,7 +39,7 @@ class CircleIParticle : IParticle {
 
     override fun draw(canvas: Canvas, paint: Paint) {
         canvas.save()
-        paint.color = Color.GREEN
+        paint.color = configuration?.color ?: Color.GREEN
         canvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
         canvas.restore()
     }
