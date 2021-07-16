@@ -20,8 +20,6 @@ interface IParticle {
 
     var pathGenerator: IPathGenerator?
 
-    var initAfterConfiguration: () -> Unit
-
     fun draw(canvas: Canvas, paint: Paint)
 
 }

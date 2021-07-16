@@ -28,12 +28,6 @@ class CircleIParticle : IParticle {
 
     override var pathGenerator: IPathGenerator? = null
 
-    override var initAfterConfiguration: () -> Unit = {
-        configuration?.let {
-            radius = min(it.width, it.height) / 2f
-        }
-    }
-
     private var radius = DEFAULT_RADIUS
 
 
