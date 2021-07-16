@@ -7,6 +7,8 @@ import com.bullfrog.particle.enum.Shape
 
 const val DEFAULT_RADIUS = 8f
 
+const val DEFAULT_STROKE_WIDTH = 1.5f
+
 const val DEFAULT_WIDTH = 10
 
 const val DEFAULT_HEIGHT = 10
@@ -30,4 +32,7 @@ class ParticleConfiguration {
 
    // CIRCLE
    internal var radius: Float = DEFAULT_RADIUS
+
+   // HOLLOW
+   internal var strokeWidth: Float = DEFAULT_STROKE_WIDTH
 }

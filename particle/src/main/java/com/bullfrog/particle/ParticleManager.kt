@@ -123,6 +123,18 @@ internal class ParticleManager(
         return this
     }
 
+    override fun radius(radius: Float): IParticleManager {
+        particleView.randomRadius = false
+        particleView.radius = radius
+        return this
+    }
+
+    override fun radius(radiusFrom: Int, radiusTo: Int): IParticleManager {
+        particleView.randomRadius = true
+        particleView.radiusRange = IntRange(radiusFrom, radiusTo)
+        return this
+    }
+
     override fun shimmer(): IParticleManager {
         particleView.shimmer = true
         return this

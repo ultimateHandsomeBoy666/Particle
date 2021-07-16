@@ -59,6 +59,10 @@ interface IParticleManager {
     fun size(width: Int, height: Int): IParticleManager
 
     fun size(widthFrom: Int, widthTo: Int, heightFrom: Int, heightTo: Int): IParticleManager
+    
+    fun radius(radius: Float): IParticleManager
+
+    fun radius(radiusFrom: Int, radiusTo: Int):IParticleManager
 
     fun shimmer(): IParticleManager
 

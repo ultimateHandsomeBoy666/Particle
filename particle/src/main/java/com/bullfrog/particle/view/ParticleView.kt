@@ -3,10 +3,7 @@ package com.bullfrog.particle.view
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.os.Debug
 import android.util.AttributeSet
-import android.util.Log
-import android.util.Size
 import android.view.View
 import com.bullfrog.particle.animator.ParticleAnimator
 import com.bullfrog.particle.enum.Shape
@@ -29,6 +26,7 @@ internal class ParticleView @JvmOverloads constructor(
     companion object {
         private const val DEFAULT_PARTICLE_NUM = 50
         private val DEFAULT_RANGE = 0..10
+        private val DEFAULT_RADIUS_RANGE = 4..12
     }
 
     // key: color int; value: color portion
@@ -60,6 +58,14 @@ internal class ParticleView @JvmOverloads constructor(
 
     var randomSize: Boolean = false
 
+    var radius: Float = DEFAULT_RADIUS
+
+    var radiusRange: IntRange = DEFAULT_RADIUS_RANGE
+
+    var randomRadius: Boolean = false
+
+    var strokeWidth: Float = DEFAULT_STROKE_WIDTH
+
     var keep: Boolean = false
 
     var paint: Paint = Paint()
@@ -74,40 +80,13 @@ internal class ParticleView @JvmOverloads constructor(
     }
 
     fun start() {
-//        configureNum()
-//        configureColor()
-//        configureAnim()
-//        configureAnchor()
-//        configureShimmer()
-//        configureSize()
-//        configureKeep()
-//        configureRotation()
-        configureAll()
-        pathAnimator?.start()
-    }
-
-    private fun configureAll() {
-        configureNum()
+        generateParticleList()
         configureColor()
         configureAnim()
         mParticles.forEach {
-            it.initialX = anchorX
-            it.initialY = anchorY
-            it.x = anchorX
-            it.y = anchorY
 
-            it.configuration!!.shimmer = shimmer
-
-            if (randomSize) {
-                it.configuration!!.width = Random.nextInt(widthSizeRange.first, widthSizeRange.last + 1)
-                it.configuration!!.height = Random.nextInt(heightSizeRange.first, heightSizeRange.last + 1)
-            } else {
-                it.configuration!!.width = width
-                it.configuration!!.height = height
-            }
-
-            it.configuration!!.rotation = rotation
         }
+        pathAnimator?.start()
     }
 
     private fun generateParticle(): IParticle {
@@ -130,7 +109,7 @@ internal class ParticleView @JvmOverloads constructor(
         }
     }
 
-    private fun configureNum() {
+    private fun generateParticleList() {
         repeat(particleNum) {
             mParticles.add(generateParticle())
         }
@@ -155,44 +134,46 @@ internal class ParticleView @JvmOverloads constructor(
         pathAnimator = ParticleAnimator(mParticles, anim)
     }
 
-    private fun configureAnchor() {
-        mParticles.forEach {
-            it.initialX = anchorX
-            it.initialY = anchorY
-            it.x = anchorX
-            it.y = anchorY
-        }
+    private fun configureAnchor(particle: IParticle) {
+        particle.initialX = anchorX
+        particle.initialY = anchorY
+        particle.x = anchorX
+        particle.y = anchorY
     }
 
-    private fun configureShimmer() {
-        mParticles.forEach {
-            it.configuration!!.shimmer = shimmer
-        }
+    private fun configureShimmer(particle: IParticle) {
+        particle.configuration!!.shimmer = shimmer
     }
 
     private fun configureKeep() {
         // TODO
+    }
+
+    private fun configureRotation(particle: IParticle) {
+        particle.configuration!!.rotation = rotation
+    }
+
+    private fun configureRandomSize(particle: IParticle) {
+        particle.configuration!!.width = Random.nextInt(widthSizeRange.first, widthSizeRange.last + 1)
+        particle.configuration!!.height = Random.nextInt(heightSizeRange.first, heightSizeRange.last + 1)
 
     }
 
-    private fun configureRotation() {
-        mParticles.forEach {
-            it.configuration!!.rotation = rotation
-        }
+    private fun configureSize(particle: IParticle){
+        particle.configuration!!.width = width
+        particle.configuration!!.height = height
     }
 
-    private fun configureSize() {
-        if (randomSize) {
-            mParticles.forEach {
-                it.configuration!!.width = Random.nextInt(widthSizeRange.first, widthSizeRange.last + 1)
-                it.configuration!!.height = Random.nextInt(heightSizeRange.first, heightSizeRange.last + 1)
-            }
-        } else {
-            mParticles.forEach {
-                it.configuration!!.width = width
-                it.configuration!!.height = height
-            }
-        }
+    private fun configureRandomRadius(particle: IParticle) {
+        particle.configuration!!.radius = Random.nextInt(radiusRange.first, radiusRange.last + 1).toFloat()
+    }
+
+    private fun configureRadius(particle: IParticle) {
+        particle.configuration!!.radius = radius
+    }
+
+    private fun configureStrokeWidth(particle: IParticle) {
+        particle.configuration!!.strokeWidth = strokeWidth
     }
 
 }
