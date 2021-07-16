@@ -80,15 +80,40 @@ internal class ParticleView @JvmOverloads constructor(
     }
 
     fun start() {
+//        configureNum()
+//        configureColor()
+//        configureAnim()
+//        configureAnchor()
+//        configureShimmer()
+//        configureSize()
+//        configureKeep()
+//        configureRotation()
+        configureAll()
+        pathAnimator?.start()
+    }
+
+    private fun configureAll() {
         configureNum()
         configureColor()
         configureAnim()
-        configureAnchor()
-        configureShimmer()
-        configureSize()
-        configureKeep()
-        configureRotation()
-        pathAnimator?.start()
+        mParticles.forEach {
+            it.initialX = anchorX
+            it.initialY = anchorY
+            it.x = anchorX
+            it.y = anchorY
+
+            it.configuration!!.shimmer = shimmer
+
+            if (randomSize) {
+                it.configuration!!.width = Random.nextInt(widthSizeRange.first, widthSizeRange.last + 1)
+                it.configuration!!.height = Random.nextInt(heightSizeRange.first, heightSizeRange.last + 1)
+            } else {
+                it.configuration!!.width = width
+                it.configuration!!.height = height
+            }
+
+            it.configuration!!.rotation = rotation
+        }
     }
 
     private fun generateParticle(): IParticle {
