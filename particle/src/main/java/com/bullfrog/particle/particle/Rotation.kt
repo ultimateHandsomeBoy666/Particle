@@ -5,10 +5,6 @@ class Rotation(
         internal var rotationDirection: RotationDirection = RotationDirection.ClockWise
 ) {
 
-    companion object {
-        val ROTATION_NONE = Rotation()
-    }
-
     enum class RotationDirection {
         ClockWise,
         AntiClockWise

@@ -9,12 +9,9 @@ import android.util.Log
 import android.util.Size
 import android.view.View
 import com.bullfrog.particle.animator.ParticleAnimator
-import com.bullfrog.particle.particle.IParticle
 import com.bullfrog.particle.enum.Shape
-import com.bullfrog.particle.particle.CircleIParticle
 import com.bullfrog.particle.animation.ParticleAnimation
-import com.bullfrog.particle.particle.ParticleConfiguration
-import com.bullfrog.particle.particle.Rotation
+import com.bullfrog.particle.particle.*
 import kotlin.random.Random
 
 internal class ParticleView @JvmOverloads constructor(
@@ -30,11 +27,8 @@ internal class ParticleView @JvmOverloads constructor(
 ) {
 
     companion object {
-
         private const val DEFAULT_PARTICLE_NUM = 50
-        private const val DEFAULT_SIZE = 10
         private val DEFAULT_RANGE = 0..10
-
     }
 
     // key: color int; value: color portion
@@ -54,11 +48,11 @@ internal class ParticleView @JvmOverloads constructor(
 
     var shimmer: Boolean = false
 
-    var rotation: Rotation = Rotation.ROTATION_NONE
+    var rotation: Rotation = ROTATION_NONE
 
-    var widthSize: Int = DEFAULT_SIZE
+    var widthSize: Int = DEFAULT_WIDTH
 
-    var heightSize: Int = DEFAULT_SIZE
+    var heightSize: Int = DEFAULT_HEIGHT
 
     var widthSizeRange: IntRange = DEFAULT_RANGE
 

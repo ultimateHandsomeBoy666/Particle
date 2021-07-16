@@ -10,12 +10,6 @@ import kotlin.random.Random
 
 class CircleIParticle : IParticle {
 
-    companion object {
-
-        private const val DEFAULT_RADIUS = 8f
-
-    }
-
     override var configuration: ParticleConfiguration? = null
 
     override var initialX: Int = 0
