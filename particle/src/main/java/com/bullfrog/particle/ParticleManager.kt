@@ -135,6 +135,11 @@ internal class ParticleManager(
         return this
     }
 
+    override fun strokeWidth(strokeWidth: Float): IParticleManager {
+        particleView.strokeWidth = strokeWidth
+        return this
+    }
+
     override fun shimmer(): IParticleManager {
         particleView.shimmer = true
         return this

@@ -9,6 +9,7 @@ import com.bullfrog.particle.animator.ParticleAnimator
 import com.bullfrog.particle.enum.Shape
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.particle.*
+import com.bullfrog.particle.particle.impl.CircleIParticle
 import kotlin.random.Random
 
 internal class ParticleView @JvmOverloads constructor(
@@ -84,7 +85,20 @@ internal class ParticleView @JvmOverloads constructor(
         configureColor()
         configureAnim()
         mParticles.forEach {
-
+            configureAnchor(it)
+            configureShimmer(it)
+            configureRotation(it)
+            if (randomSize) {
+                configureRandomSize(it)
+            } else {
+                configureSize(it)
+            }
+            if (randomRadius) {
+                configureRandomRadius(it)
+            } else {
+                configureRadius(it)
+            }
+            configureStrokeWidth(it)
         }
         pathAnimator?.start()
     }

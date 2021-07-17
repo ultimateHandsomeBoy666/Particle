@@ -1,12 +1,13 @@
-package com.bullfrog.particle.particle
+package com.bullfrog.particle.particle.impl
 
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import com.bullfrog.particle.enum.Shape
+import com.bullfrog.particle.particle.DEFAULT_COLOR
+import com.bullfrog.particle.particle.DEFAULT_RADIUS
+import com.bullfrog.particle.particle.IParticle
+import com.bullfrog.particle.particle.ParticleConfiguration
 import com.bullfrog.particle.path.IPathGenerator
-import kotlin.math.min
-import kotlin.random.Random
 
 class CircleIParticle : IParticle {
 
@@ -22,13 +23,10 @@ class CircleIParticle : IParticle {
 
     override var pathGenerator: IPathGenerator? = null
 
-    private var radius = DEFAULT_RADIUS
-
-
     override fun draw(canvas: Canvas, paint: Paint) {
         canvas.save()
-        paint.color = configuration?.color ?: Color.GREEN
-        canvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
+        paint.color = configuration?.color ?: DEFAULT_COLOR
+        canvas.drawCircle(x.toFloat(), y.toFloat(), configuration!!.radius, paint)
         canvas.restore()
     }
 }

@@ -64,6 +64,8 @@ interface IParticleManager {
 
     fun radius(radiusFrom: Int, radiusTo: Int):IParticleManager
 
+    fun strokeWidth(strokeWidth: Float): IParticleManager
+
     fun shimmer(): IParticleManager
 
     fun keep(): IParticleManager
