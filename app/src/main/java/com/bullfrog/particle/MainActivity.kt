@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 .colorFromView(button)
                 .particleNum(100)
                 .anchor(it)
-                .shape(Shape.HOLLOW_CIRCLE)
+                .shape(Shape.CIRCLE)
                 .anim(ParticleAnimation.with({
                     createPathGenerator()
                 }, {

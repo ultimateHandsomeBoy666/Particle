@@ -24,10 +24,8 @@ class CircleIParticle : IParticle {
     override var pathGenerator: IPathGenerator? = null
 
     override fun draw(canvas: Canvas, paint: Paint) {
-        canvas.save()
-        paint.color = configuration?.color ?: DEFAULT_COLOR
-        val radius = configuration?.radius ?: DEFAULT_RADIUS
+        paint.color = configuration!!.color
+        val radius = configuration!!.radius
         canvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
-        canvas.restore()
     }
 }

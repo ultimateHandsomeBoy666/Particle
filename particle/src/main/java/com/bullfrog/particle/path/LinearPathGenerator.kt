@@ -7,7 +7,7 @@ import kotlin.random.Random
 
 open class LinearPathGenerator: IPathGenerator {
 
-    var distance = Random.nextInt( 800)
+    var distance = Random.nextInt( 500, 800)
 
     val theta = Random.nextDouble(2 * PI)
 

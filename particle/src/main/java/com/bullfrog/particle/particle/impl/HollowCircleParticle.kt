@@ -20,12 +20,10 @@ class HollowCircleParticle: IParticle {
     override var pathGenerator: IPathGenerator? = null
 
     override fun draw(canvas: Canvas, paint: Paint) {
-        canvas.save()
-        paint.color = configuration?.color ?: DEFAULT_COLOR
-        paint.strokeWidth = configuration?.strokeWidth ?: DEFAULT_STROKE_WIDTH
+        paint.color = configuration!!.color
+        paint.strokeWidth = configuration!!.strokeWidth
         paint.style = Paint.Style.STROKE
-        val radius = configuration?.radius ?: DEFAULT_RADIUS
+        val radius = configuration!!.radius
         canvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
-        canvas.restore()
     }
 }
