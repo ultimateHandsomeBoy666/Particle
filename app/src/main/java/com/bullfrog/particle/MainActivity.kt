@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
                 val t = distance * progress
                 val x =  t * sin(theta)
                 val y = t * cos(theta)
-                return Pair(3 * x.toInt(), 3 * y.toInt())
+                return Pair(x.toInt(), y.toInt())
             }
         }
     }
