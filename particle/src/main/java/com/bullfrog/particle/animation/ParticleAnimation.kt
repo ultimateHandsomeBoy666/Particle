@@ -42,8 +42,8 @@ class ParticleAnimation private constructor(
             LinearPathGenerator()
         })
 
-        fun with(generator: () -> IPathGenerator,
-                 animator: () -> ValueAnimator = DEFAULT_ANIMATOR_LAMBDA): ParticleAnimation {
+        fun with(animator: () -> ValueAnimator = DEFAULT_ANIMATOR_LAMBDA,
+                generator: () -> IPathGenerator): ParticleAnimation {
             return ParticleAnimation(generator, animator)
         }
     }

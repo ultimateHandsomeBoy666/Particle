@@ -45,9 +45,9 @@ class MainActivity : AppCompatActivity() {
                 .shape(Shape.TRIANGLE)
                 .size(30, 30)
                 .anim(ParticleAnimation.with({
-                    createPathGenerator()
-                }, {
                     createAnimator()
+                }, {
+                    createPathGenerator()
                 }))
             particleManager!!.start()
             button.visibility = View.GONE

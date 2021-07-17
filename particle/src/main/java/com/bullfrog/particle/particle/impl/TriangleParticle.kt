@@ -21,11 +21,12 @@ class TriangleParticle: IParticle {
 
     override var pathGenerator: IPathGenerator? = null
 
-    val path = Path()
+    private val path = Path()
 
     override fun draw(canvas: Canvas, paint: Paint) {
         paint.color = configuration!!.color
         paint.style = Paint.Style.FILL
+        // TODO seal rotation in somewhere else
         val rotation = configuration!!.rotation
         val width = configuration!!.width
         val height = configuration!!.height
