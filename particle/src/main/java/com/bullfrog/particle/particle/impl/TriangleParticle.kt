@@ -7,7 +7,7 @@ import com.bullfrog.particle.particle.IParticle
 import com.bullfrog.particle.particle.ParticleConfiguration
 import com.bullfrog.particle.path.IPathGenerator
 
-class TriangleParticle: IParticle {
+class TriangleParticle : IParticle {
 
     override var configuration: ParticleConfiguration? = null
 

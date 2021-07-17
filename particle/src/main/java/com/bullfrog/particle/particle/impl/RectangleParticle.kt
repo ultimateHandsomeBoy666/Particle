@@ -7,7 +7,7 @@ import com.bullfrog.particle.particle.IParticle
 import com.bullfrog.particle.particle.ParticleConfiguration
 import com.bullfrog.particle.path.IPathGenerator
 
-class HollowTriangleParticle : IParticle {
+class RectangleParticle : IParticle {
 
     override var configuration: ParticleConfiguration? = null
 
@@ -25,16 +25,17 @@ class HollowTriangleParticle : IParticle {
 
     override fun draw(canvas: Canvas, paint: Paint) {
         paint.color = configuration!!.color
-        paint.style = Paint.Style.STROKE
+        paint.style = Paint.Style.FILL
         paint.strokeWidth = configuration!!.strokeWidth
         // TODO seal rotation in somewhere else
         val rotation = configuration!!.rotation
         val width = configuration!!.width
         val height = configuration!!.height
         path.reset()
-        path.moveTo(x.toFloat(), y - height / 2f)
-        path.lineTo(x - width / 2f, y + height / 2f)
+        path.moveTo(x - width / 2f, y - height / 2f)
+        path.lineTo(x + width / 2f, y - height / 2f)
         path.lineTo(x + width / 2f, y + height / 2f)
+        path.lineTo(x - width / 2f, y + height / 2f)
         path.close()
         canvas.drawPath(path, paint)
     }

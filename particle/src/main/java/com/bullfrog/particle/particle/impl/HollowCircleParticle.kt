@@ -5,7 +5,7 @@ import android.graphics.Paint
 import com.bullfrog.particle.particle.*
 import com.bullfrog.particle.path.IPathGenerator
 
-class HollowCircleParticle: IParticle {
+class HollowCircleParticle : IParticle {
 
     override var configuration: ParticleConfiguration? = null
 

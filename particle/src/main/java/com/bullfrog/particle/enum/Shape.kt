@@ -5,8 +5,6 @@ enum class Shape {
     HOLLOW_CIRCLE,
     TRIANGLE,
     HOLLOW_TRIANGLE,
-    SQUARE,
-    HOLLOW_SQUARE,
     RECTANGLE,
     HOLLOW_RECTANGLE,
     PENTACLE,
