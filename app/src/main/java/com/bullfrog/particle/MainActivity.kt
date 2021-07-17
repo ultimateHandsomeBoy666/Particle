@@ -42,13 +42,13 @@ class MainActivity : AppCompatActivity() {
                 .colorFromView(button)
                 .particleNum(100)
                 .anchor(it)
-                .shape(Shape.CIRCLE)
+                .shape(Shape.TRIANGLE)
+                .size(30, 30)
                 .anim(ParticleAnimation.with({
                     createPathGenerator()
                 }, {
                     createAnimator()
                 }))
-                .strokeWidth(8f)
             particleManager!!.start()
             button.visibility = View.GONE
         }
