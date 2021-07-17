@@ -11,6 +11,7 @@ import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.particle.*
 import com.bullfrog.particle.particle.impl.CircleIParticle
 import com.bullfrog.particle.particle.impl.HollowCircleParticle
+import com.bullfrog.particle.particle.impl.HollowTriangleParticle
 import com.bullfrog.particle.particle.impl.TriangleParticle
 import kotlin.random.Random
 
@@ -126,6 +127,13 @@ internal class ParticleView @JvmOverloads constructor(
                 val particle = TriangleParticle().also {
                     it.configuration = ParticleConfiguration()
                     it.configuration!!.shape = Shape.TRIANGLE
+                }
+                particle
+            }
+            Shape.HOLLOW_TRIANGLE -> {
+                val particle = HollowTriangleParticle().also {
+                    it.configuration = ParticleConfiguration()
+                    it.configuration!!.shape = Shape.HOLLOW_TRIANGLE
                 }
                 particle
             }

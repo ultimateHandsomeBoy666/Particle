@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 .colorFromView(button)
                 .particleNum(100)
                 .anchor(it)
-                .shape(Shape.TRIANGLE)
+                .shape(Shape.HOLLOW_TRIANGLE)
                 .size(30, 30)
                 .anim(ParticleAnimation.with({
                     createAnimator()
