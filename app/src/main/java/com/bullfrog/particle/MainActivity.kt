@@ -40,14 +40,15 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             particleManager = Particles.with(this, container)
                 .colorFromView(button)
-                .particleNum(500)
+                .particleNum(100)
                 .anchor(it)
-                .shape(Shape.CIRCLE)
+                .shape(Shape.HOLLOW_CIRCLE)
                 .anim(ParticleAnimation.with({
                     createPathGenerator()
                 }, {
                     createAnimator()
                 }))
+                .strokeWidth(8f)
             particleManager!!.start()
             button.visibility = View.GONE
         }
@@ -63,9 +64,9 @@ class MainActivity : AppCompatActivity() {
 
             override fun getCurrentCoord(progress: Float): Pair<Int, Int> {
                 val t = distance * progress
-                val x =  16 * sin(t).pow(3)
-                val y = 13 * cos(t) - 5 * cos(2 * t) - 2 * cos(3 * t) - cos(4 * t)
-                return Pair(30 * x.toInt(), 30 * y.toInt())
+                val x =  t * sin(theta)
+                val y = t * cos(theta)
+                return Pair(3 * x.toInt(), 3 * y.toInt())
             }
         }
     }

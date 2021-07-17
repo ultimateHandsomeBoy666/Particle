@@ -23,8 +23,9 @@ class HollowCircleParticle: IParticle {
         canvas.save()
         paint.color = configuration?.color ?: DEFAULT_COLOR
         paint.strokeWidth = configuration?.strokeWidth ?: DEFAULT_STROKE_WIDTH
+        paint.style = Paint.Style.STROKE
         val radius = configuration?.radius ?: DEFAULT_RADIUS
-        canvas.drawOval(x - radius, y - radius, x + radius, y + radius, paint)
+        canvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
         canvas.restore()
     }
 }

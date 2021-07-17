@@ -10,6 +10,7 @@ import com.bullfrog.particle.enum.Shape
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.particle.*
 import com.bullfrog.particle.particle.impl.CircleIParticle
+import com.bullfrog.particle.particle.impl.HollowCircleParticle
 import kotlin.random.Random
 
 internal class ParticleView @JvmOverloads constructor(
@@ -110,6 +111,13 @@ internal class ParticleView @JvmOverloads constructor(
                 val particle = CircleIParticle().also {
                     it.configuration = ParticleConfiguration()
                     it.configuration!!.shape = Shape.CIRCLE
+                }
+                particle
+            }
+            Shape.HOLLOW_CIRCLE -> {
+                val particle = HollowCircleParticle().also {
+                    it.configuration = ParticleConfiguration()
+                    it.configuration!!.shape = Shape.HOLLOW_CIRCLE
                 }
                 particle
             }
