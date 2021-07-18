@@ -36,8 +36,8 @@ class MainActivity : AppCompatActivity() {
                 .particleNum(100)
                 .anchor(it)
                 .shape(Shape.BITMAP)
-                .bitmap(R.drawable.button)
-                .size(20, 40, 10, 20)
+                .bitmap(R.drawable.star)
+                .size(50, 50)
                 .anim(ParticleAnimation.with({
                     createAnimator()
                 }, {
