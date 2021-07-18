@@ -1,6 +1,8 @@
 package com.bullfrog.particle.particle
 
+import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.util.Size
 import com.bullfrog.particle.enum.Shape
 
@@ -39,4 +41,11 @@ class ParticleConfiguration {
 
    // HOLLOW
    internal var strokeWidth: Float = DEFAULT_STROKE_WIDTH
+
+   // BITMAP
+   internal var resId: Int = -1
+
+   internal var bitmap: Bitmap? = null
+
+   internal var drawable: Drawable? = null
 }

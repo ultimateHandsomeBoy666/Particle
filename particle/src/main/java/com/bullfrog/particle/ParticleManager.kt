@@ -6,6 +6,8 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.VectorDrawable
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.drawToBitmap
@@ -104,11 +106,6 @@ internal class ParticleManager(
         return this
     }
 
-    override fun rotation(rotation: Rotation): IParticleManager {
-        particleView.rotation = rotation
-        return this
-    }
-
     override fun size(width: Int, height: Int): IParticleManager {
         particleView.widthSize = width
         particleView.heightSize = height
@@ -137,6 +134,27 @@ internal class ParticleManager(
 
     override fun strokeWidth(strokeWidth: Float): IParticleManager {
         particleView.strokeWidth = strokeWidth
+        return this
+    }
+
+    override fun bitmap(@DrawableRes resId: Int): IParticleManager {
+        val drawable = ContextCompat.getDrawable(context, resId)
+        particleView.bitmap = drawable?.toBitmap()
+        return this
+    }
+
+    override fun bitmap(drawable: Drawable): IParticleManager {
+        particleView.bitmap = drawable.toBitmap()
+        return this
+    }
+
+    override fun bitmap(bitmap: Bitmap): IParticleManager {
+        particleView.bitmap = bitmap
+        return this
+    }
+
+    override fun rotation(rotation: Rotation): IParticleManager {
+        particleView.rotation = rotation
         return this
     }
 

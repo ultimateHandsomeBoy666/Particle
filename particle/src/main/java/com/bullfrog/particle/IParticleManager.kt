@@ -52,10 +52,6 @@ interface IParticleManager {
 
     fun particleNum(num: Int): IParticleManager
 
-    // region effect
-
-    fun rotation(rotation: Rotation): IParticleManager
-
     fun size(width: Int, height: Int): IParticleManager
 
     fun size(widthFrom: Int, widthTo: Int, heightFrom: Int, heightTo: Int): IParticleManager
@@ -65,6 +61,16 @@ interface IParticleManager {
     fun radius(radiusFrom: Int, radiusTo: Int):IParticleManager
 
     fun strokeWidth(strokeWidth: Float): IParticleManager
+
+    fun bitmap(@DrawableRes bitmap: Int): IParticleManager
+
+    fun bitmap(bitmap: Bitmap): IParticleManager
+
+    fun bitmap(bitmap: Drawable): IParticleManager
+
+    // region effect
+
+    fun rotation(rotation: Rotation): IParticleManager
 
     fun shimmer(): IParticleManager
 

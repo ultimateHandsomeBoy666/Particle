@@ -1,8 +1,10 @@
 package com.bullfrog.particle.view
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import com.bullfrog.particle.animator.ParticleAnimator
@@ -67,6 +69,8 @@ internal class ParticleView @JvmOverloads constructor(
 
     var strokeWidth: Float = DEFAULT_STROKE_WIDTH
 
+    var bitmap: Bitmap? = null
+
     var keep: Boolean = false
 
     var paint: Paint = Paint()
@@ -99,6 +103,7 @@ internal class ParticleView @JvmOverloads constructor(
                 configureRadius(it)
             }
             configureStrokeWidth(it)
+            configureBitmap(it)
         }
         pathAnimator?.start()
     }
@@ -159,6 +164,13 @@ internal class ParticleView @JvmOverloads constructor(
                 val particle = HollowPentacleParticle().also {
                     it.configuration = ParticleConfiguration()
                     it.configuration!!.shape = Shape.HOLLOW_PENTACLE
+                }
+                particle
+            }
+            Shape.BITMAP -> {
+                val particle = BitmapParticle().also {
+                    it.configuration = ParticleConfiguration()
+                    it.configuration!!.shape = Shape.BITMAP
                 }
                 particle
             }
@@ -230,6 +242,10 @@ internal class ParticleView @JvmOverloads constructor(
 
     private fun configureStrokeWidth(particle: IParticle) {
         particle.configuration!!.strokeWidth = strokeWidth
+    }
+
+    private fun configureBitmap(particle: IParticle) {
+        particle.configuration!!.bitmap = bitmap
     }
 
 }

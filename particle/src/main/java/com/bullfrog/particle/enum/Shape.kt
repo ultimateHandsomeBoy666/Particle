@@ -8,5 +8,6 @@ enum class Shape {
     RECTANGLE,
     HOLLOW_RECTANGLE,
     PENTACLE,
-    HOLLOW_PENTACLE
+    HOLLOW_PENTACLE,
+    BITMAP
 }
