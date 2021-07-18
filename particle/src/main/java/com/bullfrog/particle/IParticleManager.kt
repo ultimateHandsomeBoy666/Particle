@@ -50,7 +50,8 @@ interface IParticleManager {
 
     fun strokeWidth(strokeWidth: Float): IParticleManager
 
-    fun bitmap(@DrawableRes bitmap: Int): IParticleManager
+    // resId can be vector resId or bitmap resId
+    fun bitmap(@DrawableRes resId: Int): IParticleManager
 
     fun bitmap(view: View): IParticleManager
 
