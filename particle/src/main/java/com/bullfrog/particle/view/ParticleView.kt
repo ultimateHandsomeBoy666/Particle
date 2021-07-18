@@ -141,10 +141,24 @@ internal class ParticleView @JvmOverloads constructor(
                 }
                 particle
             }
-            // TODO other particles
-            else -> {
-                val particle = CircleIParticle().also {
+            Shape.HOLLOW_RECTANGLE -> {
+                val particle = HollowRectangleParticle().also {
                     it.configuration = ParticleConfiguration()
+                    it.configuration!!.shape = Shape.HOLLOW_RECTANGLE
+                }
+                particle
+            }
+            Shape.PENTACLE -> {
+                val particle = PentacleParticle().also {
+                    it.configuration = ParticleConfiguration()
+                    it.configuration!!.shape = Shape.PENTACLE
+                }
+                particle
+            }
+            Shape.HOLLOW_PENTACLE -> {
+                val particle = HollowPentacleParticle().also {
+                    it.configuration = ParticleConfiguration()
+                    it.configuration!!.shape = Shape.HOLLOW_PENTACLE
                 }
                 particle
             }
