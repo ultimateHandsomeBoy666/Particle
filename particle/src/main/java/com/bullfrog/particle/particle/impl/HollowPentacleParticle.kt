@@ -1,6 +1,7 @@
 package com.bullfrog.particle.particle.impl
 
 import android.graphics.Canvas
+import android.graphics.Matrix
 import android.graphics.Paint
 import android.graphics.Path
 import com.bullfrog.particle.particle.IParticle
@@ -22,9 +23,13 @@ class HollowPentacleParticle : IParticle {
 
     override var y: Int = 0
 
+    override var angle: Float = 0f
+
     override var pathGenerator: IPathGenerator? = null
 
     private val path: Path = Path()
+
+    private val matrix = Matrix()
 
     private val sin1 = sin(PI / 5f).toFloat()
     private val cos1 = cos(PI / 5f).toFloat()
@@ -65,9 +70,9 @@ class HollowPentacleParticle : IParticle {
         paint.color = configuration!!.color
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = configuration!!.strokeWidth
-        // TODO seal rotation in somewhere else
-        val rotation = configuration!!.rotation
         val radius = configuration!!.radius
+        matrix.reset()
+        matrix.postRotate(angle, x.toFloat(), y.toFloat())
         path.reset()
         path.moveTo(x.toFloat(), y - radius)
         path.lineTo(x + innerRadius * sin1, y - innerRadius * cos1)
@@ -80,6 +85,7 @@ class HollowPentacleParticle : IParticle {
         path.lineTo(x + radius * sin8, y - radius * cos8)
         path.lineTo(x + innerRadius * sin9, y - innerRadius * cos9)
         path.close()
+        path.transform(matrix)
         canvas.drawPath(path, paint)
     }
 }

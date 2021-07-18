@@ -1,6 +1,7 @@
 package com.bullfrog.particle.particle.impl
 
 import android.graphics.Canvas
+import android.graphics.Matrix
 import android.graphics.Paint
 import android.graphics.Path
 import com.bullfrog.particle.particle.IParticle
@@ -19,23 +20,28 @@ class HollowTriangleParticle : IParticle {
 
     override var y: Int = 0
 
+    override var angle: Float = 0f
+
     override var pathGenerator: IPathGenerator? = null
 
     private val path = Path()
+
+    private val matrix = Matrix()
 
     override fun draw(canvas: Canvas, paint: Paint) {
         paint.color = configuration!!.color
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = configuration!!.strokeWidth
-        // TODO seal rotation in somewhere else
-        val rotation = configuration!!.rotation
         val width = configuration!!.width
         val height = configuration!!.height
+        matrix.reset()
+        matrix.postRotate(angle, x.toFloat(), y.toFloat())
         path.reset()
         path.moveTo(x.toFloat(), y - height / 2f)
         path.lineTo(x - width / 2f, y + height / 2f)
         path.lineTo(x + width / 2f, y + height / 2f)
         path.close()
+        path.transform(matrix)
         canvas.drawPath(path, paint)
     }
 }

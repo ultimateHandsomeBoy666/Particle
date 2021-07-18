@@ -16,6 +16,10 @@ interface IParticle {
 
     var y: Int
 
+    var angle: Float
+
+    //var alpha: Int
+
     var configuration: ParticleConfiguration?
 
     var pathGenerator: IPathGenerator?

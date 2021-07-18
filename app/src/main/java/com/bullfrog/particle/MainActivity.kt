@@ -9,6 +9,9 @@ import android.widget.Button
 import android.widget.TextView
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.enum.Shape
+import com.bullfrog.particle.particle.ROTATION_NONE
+import com.bullfrog.particle.particle.Rotation
+import com.bullfrog.particle.particle.RotationDirection
 import com.bullfrog.particle.path.IPathGenerator
 import com.bullfrog.particle.path.LinearPathGenerator
 import kotlin.math.*
@@ -35,9 +38,11 @@ class MainActivity : AppCompatActivity() {
                 .colorFromView(button)
                 .particleNum(100)
                 .anchor(it)
-                .shape(Shape.BITMAP)
+                .shape(Shape.TRIANGLE)
+                .radius(10, 30)
+                .strokeWidth(8f)
                 .bitmap(R.drawable.star)
-                .size(50, 50)
+                .size(10, 50, 40, 50)
                 .anim(ParticleAnimation.with({
                     createAnimator()
                 }, {

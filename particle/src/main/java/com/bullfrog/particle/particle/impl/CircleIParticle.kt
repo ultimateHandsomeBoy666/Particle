@@ -21,6 +21,8 @@ class CircleIParticle : IParticle {
 
     override var y: Int = 0
 
+    override var angle: Float = 0f
+
     override var pathGenerator: IPathGenerator? = null
 
     override fun draw(canvas: Canvas, paint: Paint) {
