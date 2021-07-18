@@ -3,7 +3,6 @@ package com.bullfrog.particle
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.VectorDrawable
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.DrawableRes
@@ -64,26 +63,6 @@ internal class ParticleManager(
         return this
     }
 
-    override fun shapePath(vararg paths: VectorDrawable) : IParticleManager {
-        // TODO
-        return this
-    }
-
-    override fun shapeBitmap(vararg bitmaps: Bitmap) : IParticleManager {
-        // TODO
-        return this
-    }
-
-    override fun shapeDrawable(vararg drawables: Drawable) : IParticleManager {
-        // TODO
-        return this
-    }
-
-    override fun shapeDrawable(vararg drawables: Int) : IParticleManager{
-        // TODO
-        return this
-    }
-
     override fun anim(anim: ParticleAnimation): IParticleManager {
         particleView.anim = anim
         return this
@@ -140,6 +119,12 @@ internal class ParticleManager(
     override fun bitmap(@DrawableRes resId: Int): IParticleManager {
         val drawable = ContextCompat.getDrawable(context, resId)
         particleView.bitmap = drawable?.toBitmap()
+        return this
+    }
+
+    override fun bitmap(view: View): IParticleManager {
+        val bitmap = view.drawToBitmap()
+        particleView.bitmap = bitmap
         return this
     }
 

@@ -26,21 +26,9 @@ interface IParticleManager {
 
     // endregion
 
-    // region particle shape
+    // region particle
 
     fun shape(vararg shapes: Shape): IParticleManager
-
-    fun shapePath(vararg paths: VectorDrawable): IParticleManager
-
-    fun shapeBitmap(vararg bitmaps: Bitmap): IParticleManager
-
-    fun shapeDrawable(vararg drawables: Drawable): IParticleManager
-
-    fun shapeDrawable(@DrawableRes vararg drawables: Int): IParticleManager
-
-    // endregion
-
-    // region anim
 
     fun anim(anim: ParticleAnimation): IParticleManager
 
@@ -64,9 +52,11 @@ interface IParticleManager {
 
     fun bitmap(@DrawableRes bitmap: Int): IParticleManager
 
+    fun bitmap(view: View): IParticleManager
+
     fun bitmap(bitmap: Bitmap): IParticleManager
 
-    fun bitmap(bitmap: Drawable): IParticleManager
+    fun bitmap(drawable: Drawable): IParticleManager
 
     // region effect
 
