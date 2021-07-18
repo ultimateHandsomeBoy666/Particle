@@ -43,9 +43,5 @@ class ParticleConfiguration {
    internal var strokeWidth: Float = DEFAULT_STROKE_WIDTH
 
    // BITMAP
-   internal var resId: Int = -1
-
    internal var bitmap: Bitmap? = null
-
-   internal var drawable: Drawable? = null
 }
