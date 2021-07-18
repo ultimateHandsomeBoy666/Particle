@@ -22,4 +22,8 @@ interface IParticle {
 
     fun draw(canvas: Canvas, paint: Paint)
 
+    fun initAfterConfigure() {
+
+    }
+
 }

@@ -23,11 +23,21 @@ class BitmapParticle : IParticle {
 
     private var matrix = Matrix()
 
+    private var xScale = 1f
+
+    private var yScale = 1f
+
+    override fun initAfterConfigure() {
+        val bitmap = configuration!!.bitmap
+        bitmap?.let {
+            xScale = configuration!!.width / it.width.toFloat()
+            yScale = configuration!!.height / it.height.toFloat()
+        }
+    }
+
     override fun draw(canvas: Canvas, paint: Paint) {
         val bitmap = configuration!!.bitmap
         bitmap?.let {
-            val xScale = configuration!!.width / bitmap.width.toFloat()
-            val yScale = configuration!!.height / bitmap.height.toFloat()
             matrix.reset()
             matrix.postTranslate(-it.width / 2f, -it.height / 2f)
             matrix.postScale(xScale, yScale)

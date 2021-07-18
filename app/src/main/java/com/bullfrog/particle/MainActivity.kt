@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 .anchor(it)
                 .shape(Shape.BITMAP)
                 .bitmap(R.drawable.button)
-                .size(30, 30)
+                .size(20, 40, 10, 20)
                 .anim(ParticleAnimation.with({
                     createAnimator()
                 }, {

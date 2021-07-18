@@ -56,16 +56,17 @@ class PentacleParticle : IParticle {
 
     private var innerRadius: Float = -1f
 
+    override fun initAfterConfigure() {
+        val radius = configuration!!.radius
+        innerRadius = radius * cos1 - radius * sin1 * sin1 / cos1
+    }
+
     override fun draw(canvas: Canvas, paint: Paint) {
         paint.color = configuration!!.color
         paint.style = Paint.Style.FILL
         // TODO seal rotation in somewhere else
         val rotation = configuration!!.rotation
-        val radius = 20f
-
-        if (innerRadius < 0f) {
-            innerRadius = radius * cos1 - radius * sin1 * sin1 / cos1
-        }
+        val radius = configuration!!.radius
         path.reset()
         path.moveTo(x.toFloat(), y - radius)
         path.lineTo(x + innerRadius * sin1, y - innerRadius * cos1)

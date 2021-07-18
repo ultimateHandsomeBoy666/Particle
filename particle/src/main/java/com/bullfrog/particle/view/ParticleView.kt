@@ -104,6 +104,9 @@ internal class ParticleView @JvmOverloads constructor(
             }
             configureStrokeWidth(it)
             configureBitmap(it)
+
+            // init after configure
+            it.initAfterConfigure()
         }
         pathAnimator?.start()
     }
