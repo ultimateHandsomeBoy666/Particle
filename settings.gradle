@@ -1,3 +1,3 @@
-include ':particle'
+include ':particlelib'
 include ':app'
 rootProject.name = "Particle"
