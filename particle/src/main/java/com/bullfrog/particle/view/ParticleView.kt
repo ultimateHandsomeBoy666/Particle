@@ -71,8 +71,6 @@ internal class ParticleView @JvmOverloads constructor(
 
     var bitmap: Bitmap? = null
 
-    var keep: Boolean = false
-
     var paint: Paint = Paint()
 
     var pathAnimator: ParticleAnimator? = null
@@ -90,7 +88,7 @@ internal class ParticleView @JvmOverloads constructor(
         configureAnim()
         mParticles.forEach {
             configureAnchor(it)
-            configureShimmer(it)
+            // configureShimmer(it)
             configureRotation(it)
             if (randomSize) {
                 configureRandomSize(it)
@@ -222,10 +220,6 @@ internal class ParticleView @JvmOverloads constructor(
 
     private fun configureShimmer(particle: IParticle) {
         particle.configuration!!.shimmer = shimmer
-    }
-
-    private fun configureKeep() {
-        // TODO
     }
 
     private fun configureRotation(particle: IParticle) {

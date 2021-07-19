@@ -143,11 +143,6 @@ internal class ParticleManager(
         return this
     }
 
-    override fun keep(): IParticleManager {
-        particleView.keep = true
-        return this
-    }
-
     override fun start() {
         if (particleView.parent != container) {
             addParticleView()

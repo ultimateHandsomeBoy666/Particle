@@ -65,7 +65,7 @@ interface IParticleManager {
 
     // fun shimmer(): IParticleManager
 
-    fun keep(): IParticleManager
+    // fun keep(): IParticleManager
 
     // endregion
 
