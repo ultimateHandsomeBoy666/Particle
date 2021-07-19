@@ -6,18 +6,18 @@ To start with, you need to add it in your root build.gradle at the end of reposi
 
 ```groovy
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 
 Then add the dependency
 
-```groo
+```groovy
 dependencies {
-		implementation 'com.github.ultimateHandsomeBoy666:particle:0.1.0'
-	}
+	implementation 'com.github.ultimateHandsomeBoy666:particle:0.1.0'
+}
 ```
 
