@@ -5,6 +5,8 @@ import android.renderscript.Sampler
 import android.view.animation.AccelerateDecelerateInterpolator
 import com.bullfrog.particle.path.IPathGenerator
 import com.bullfrog.particle.path.LinearPathGenerator
+import com.bullfrog.particle.path.RisePathGenerator
+import kotlin.random.Random
 
 class ParticleAnimation private constructor(
         private val pathGenerator: () -> IPathGenerator,
@@ -32,14 +34,19 @@ class ParticleAnimation private constructor(
             LinearPathGenerator()
         })
 
-        // TODO create different path generator
         val RISE = ParticleAnimation({
-            LinearPathGenerator()
+            RisePathGenerator()
         })
 
-        // TODO create different path generator
         val FALL = ParticleAnimation({
-            LinearPathGenerator()
+            object : LinearPathGenerator() {
+                override var distance = Random.nextInt(800)
+                val x = Random.nextInt(-300, 300)
+                override fun getCurrentCoord(progress: Float): Pair<Int, Int> {
+                    val coordY = progress * distance
+                    return Pair(x, coordY.toInt())
+                }
+            }
         })
 
         fun with(animator: () -> ValueAnimator = DEFAULT_ANIMATOR_LAMBDA,

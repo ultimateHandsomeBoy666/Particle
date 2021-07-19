@@ -7,9 +7,9 @@ import kotlin.random.Random
 
 open class LinearPathGenerator: IPathGenerator {
 
-    var distance = Random.nextInt( 150, 800)
+    open var distance = Random.nextInt( 150, 800)
 
-    val theta = Random.nextDouble(2 * PI)
+    open val theta = Random.nextDouble(2 * PI)
 
     override fun getCurrentCoord(progress: Float): Pair<Int, Int> {
         val coordX = distance * progress * cos(theta)
