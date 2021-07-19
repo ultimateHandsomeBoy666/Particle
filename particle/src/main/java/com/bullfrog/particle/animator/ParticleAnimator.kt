@@ -13,8 +13,6 @@ class ParticleAnimator(
 
     private var animator: ValueAnimator? = null
 
-    private var duration: Int = 0
-
     init {
         initPathGenerators()
         initAnimator()
@@ -28,18 +26,17 @@ class ParticleAnimator(
 
     private fun initAnimator() {
         animator = animation.createAnimator()
-        // duration by second
-        duration = (animator!!.duration / 1000).toInt()
+        val duration = animator!!.duration
         animator!!.addUpdateListener { animator ->
             val progress = animator.animatedFraction
             IParticles.forEach {
-                val coords = it.pathGenerator?.getCurrentCoord(progress, animator.duration)
+                val coords = it.pathGenerator?.getCurrentCoord(progress, duration)
                 it.x = it.initialX + (coords?.first ?: 0)
                 it.y = it.initialY + (coords?.second ?: 0)
 
                 val rotation = it.configuration!!.rotation
                 val sign = if (rotation.rotationDirection == RotationDirection.ClockWise) 1 else -1
-                it.angle = sign * rotation.angularVelocity * duration * progress
+                it.angle = sign * rotation.angularVelocity * duration * progress / 1000f
             }
         }
     }
