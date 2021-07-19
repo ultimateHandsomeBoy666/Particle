@@ -1,16 +1,27 @@
 package com.bullfrog.particle.path
 
 import kotlin.math.PI
+import kotlin.math.cos
 import kotlin.math.pow
+import kotlin.math.sin
 import kotlin.random.Random
 
 open class FireWorkPathGenerator : IPathGenerator {
 
-    open val gravity = 3000
+    open var gravity = 1000
 
-    open val initVelocityX = Random.nextInt(-400, 400)
+    open var initVelocity = Random.nextInt(-800, 800)
 
-    open val initVelocityY = Random.nextInt(1000, 2000)
+    open var theta = Random.nextDouble(PI)
+
+    open var initVelocityX = 0.0
+
+    open var initVelocityY = 0.0
+
+    init {
+        initVelocityX = initVelocity * cos(theta)
+        initVelocityY = initVelocity * sin(theta)
+    }
 
     override fun getCurrentCoord(progress: Float, duration: Long): Pair<Int, Int> {
         val t = duration * progress / 1000
