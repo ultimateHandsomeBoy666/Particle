@@ -27,6 +27,7 @@ class CircleIParticle : IParticle {
 
     override fun draw(canvas: Canvas, paint: Paint) {
         paint.color = configuration!!.color
+        paint.style = Paint.Style.FILL
         val radius = configuration!!.radius
         canvas.drawCircle(x.toFloat(), y.toFloat(), radius, paint)
     }

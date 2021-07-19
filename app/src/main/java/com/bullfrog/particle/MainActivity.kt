@@ -9,9 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.enum.Shape
-import com.bullfrog.particle.particle.ROTATION_NONE
 import com.bullfrog.particle.particle.Rotation
-import com.bullfrog.particle.particle.RotationDirection
 import com.bullfrog.particle.path.IPathGenerator
 import com.bullfrog.particle.path.LinearPathGenerator
 import kotlin.math.*
@@ -36,13 +34,14 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             particleManager = Particles.with(this, container)
                 .colorFromView(button)
-                .particleNum(100)
+                .particleNum(500)
                 .anchor(it)
-                .shape(Shape.TRIANGLE)
-                .radius(10, 30)
+                .shape(Shape.CIRCLE, Shape.TRIANGLE, Shape.HOLLOW_CIRCLE, Shape.HOLLOW_RECTANGLE, Shape.BITMAP)
+                .radius(10, 20)
                 .strokeWidth(8f)
                 .bitmap(R.drawable.star)
-                .size(10, 50, 40, 50)
+                .size(30, 30)
+                .rotation(Rotation(1000))
                 .anim(ParticleAnimation.with({
                     createAnimator()
                 }, {
@@ -72,8 +71,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun createAnimator(): ValueAnimator {
         val animator = ValueAnimator.ofInt(0, 1)
-        animator.repeatCount = -1
-        animator.repeatMode = ValueAnimator.REVERSE
+        // animator.repeatCount = -1
+        // animator.repeatMode = ValueAnimator.REVERSE
         animator.duration = 2000L
         return animator
     }
