@@ -165,6 +165,14 @@ internal class ParticleManager(
         removeParticleView()
     }
 
+    override fun show() {
+        particleView.visibility = View.VISIBLE
+    }
+
+    override fun hide() {
+        particleView.visibility = View.INVISIBLE
+    }
+
     private fun addParticleView() {
         container.addView(particleView, ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT)

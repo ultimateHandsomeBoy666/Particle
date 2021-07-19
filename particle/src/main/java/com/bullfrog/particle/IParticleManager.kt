@@ -73,5 +73,9 @@ interface IParticleManager {
 
     fun pause()
 
+    fun show()
+
+    fun hide()
+
     fun remove()
 }

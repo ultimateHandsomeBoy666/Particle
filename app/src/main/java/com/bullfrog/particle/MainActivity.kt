@@ -1,5 +1,6 @@
 package com.bullfrog.particle
 
+import android.animation.Animator
 import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
