@@ -82,6 +82,11 @@ internal class ParticleView @JvmOverloads constructor(
         invalidate()
     }
 
+    private fun startInternal() {
+        visibility = VISIBLE
+        pathAnimator?.start()
+    }
+
     fun configureAndStart() {
         generateParticleList()
         configureColor()
@@ -106,11 +111,11 @@ internal class ParticleView @JvmOverloads constructor(
             // init after configure
             it.initAfterConfigure()
         }
-        pathAnimator?.start()
+        startInternal()
     }
 
     fun start() {
-        pathAnimator?.start()
+        startInternal()
     }
 
     fun pause() {
@@ -118,7 +123,7 @@ internal class ParticleView @JvmOverloads constructor(
     }
 
     fun cancel() {
-        // TODO clear screen and reset particles
+        visibility = INVISIBLE
         pathAnimator?.cancel()
     }
 
