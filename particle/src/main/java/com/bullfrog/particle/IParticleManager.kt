@@ -63,7 +63,7 @@ interface IParticleManager {
 
     fun rotation(rotation: Rotation): IParticleManager
 
-    fun shimmer(): IParticleManager
+    // fun shimmer(): IParticleManager
 
     fun keep(): IParticleManager
 
