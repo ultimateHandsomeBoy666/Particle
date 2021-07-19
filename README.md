@@ -17,7 +17,7 @@ Then add the dependency
 
 ```groovy
 dependencies {
-	implementation 'com.github.ultimateHandsomeBoy666:particle:0.1.0'
+	implementation 'com.github.ultimateHandsomeBoy666:Particle:0.1'
 }
 ```
 
