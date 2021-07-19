@@ -35,16 +35,18 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             particleManager!!.colorFromView(button)
-                .particleNum(500)
+                .particleNum(300)
                 .anchor(it)
-                .shape(Shape.CIRCLE, Shape.TRIANGLE, Shape.PENTACLE, Shape.HOLLOW_RECTANGLE, Shape.BITMAP)
-                .radius(8, 16)
+                .shape(Shape.CIRCLE, Shape.BITMAP)
+                .radius(8, 12)
+                .strokeWidth(10f)
                 .size(20, 20)
-                .bitmap(R.drawable.star)
+                .rotation(Rotation(600))
+                .bitmap(R.drawable.ic_thumbs_up)
                 .anim(ParticleAnimation.with({
                     createAnimator()
                 }, {
-                    FireWorkPathGenerator()
+                    createPathGenerator()
                 }))
             particleManager!!.start()
             button.visibility = View.GONE
