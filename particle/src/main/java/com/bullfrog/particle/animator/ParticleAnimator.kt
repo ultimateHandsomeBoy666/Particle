@@ -47,4 +47,8 @@ class ParticleAnimator(
     fun start() {
         animator?.start()
     }
+
+    fun pause() {
+        animator?.pause()
+    }
 }

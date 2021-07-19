@@ -84,7 +84,7 @@ internal class ParticleView @JvmOverloads constructor(
         invalidate()
     }
 
-    fun start() {
+    fun configureAndStart() {
         generateParticleList()
         configureColor()
         configureAnim()
@@ -109,6 +109,14 @@ internal class ParticleView @JvmOverloads constructor(
             it.initAfterConfigure()
         }
         pathAnimator?.start()
+    }
+
+    fun start() {
+        pathAnimator?.start()
+    }
+
+    fun pause() {
+        pathAnimator?.pause()
     }
 
     private fun generateParticle(): IParticle {

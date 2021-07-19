@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         resetButton.setOnClickListener {
             button.visibility = View.VISIBLE
-            particleManager?.stop()
+            particleManager?.remove()
         }
     }
 

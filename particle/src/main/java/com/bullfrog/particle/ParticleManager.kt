@@ -149,11 +149,19 @@ internal class ParticleManager(
     }
 
     override fun start() {
-        addParticleView()
-        particleView.start()
+        if (particleView.parent != container) {
+            addParticleView()
+            particleView.configureAndStart()
+        } else {
+            particleView.start()
+        }
     }
 
-    override fun stop() {
+    override fun pause() {
+        particleView.pause()
+    }
+
+    override fun remove() {
         removeParticleView()
     }
 
