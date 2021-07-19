@@ -1,6 +1,5 @@
 package com.bullfrog.particle
 
-import android.animation.Animator
 import android.animation.ValueAnimator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,12 +10,8 @@ import android.widget.TextView
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.enum.Shape
 import com.bullfrog.particle.particle.Rotation
-import com.bullfrog.particle.path.FallPathGenerator
-import com.bullfrog.particle.path.IPathGenerator
-import com.bullfrog.particle.path.LinearPathGenerator
-import com.bullfrog.particle.path.RisePathGenerator
+import com.bullfrog.particle.path.*
 import kotlin.math.*
-import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -39,7 +34,7 @@ class MainActivity : AppCompatActivity() {
             particleManager = Particles.with(this, container)
                 .colorFromView(button)
                 .particleNum(100)
-                .anchor(800, 0)
+                .anchor(it)
                 .shape(Shape.CIRCLE, Shape.TRIANGLE, Shape.HOLLOW_CIRCLE, Shape.HOLLOW_RECTANGLE, Shape.BITMAP)
                 .radius(10, 20)
                 .strokeWidth(8f)
@@ -49,9 +44,7 @@ class MainActivity : AppCompatActivity() {
                 .anim(ParticleAnimation.with({
                     createAnimator()
                 }, {
-                    object : FallPathGenerator() {
-                        override var distance: Int = Random.nextInt(1500)
-                    }
+                    FireWorkPathGenerator()
                 }))
             particleManager!!.start()
             button.visibility = View.GONE
@@ -66,7 +59,7 @@ class MainActivity : AppCompatActivity() {
     private fun createPathGenerator(): IPathGenerator {
         return object : LinearPathGenerator() {
 
-            override fun getCurrentCoord(progress: Float): Pair<Int, Int> {
+            override fun getCurrentCoord(progress: Float, duration: Long): Pair<Int, Int> {
                 val t = distance * progress
                 val x =  t * sin(theta)
                 val y = t * cos(theta)
@@ -79,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         val animator = ValueAnimator.ofInt(0, 1)
         // animator.repeatCount = -1
         // animator.repeatMode = ValueAnimator.REVERSE
-        animator.duration = 5000L
+        animator.duration = 2000L
         return animator
     }
 }

@@ -33,7 +33,7 @@ class ParticleAnimator(
         animator!!.addUpdateListener { animator ->
             val progress = animator.animatedFraction
             IParticles.forEach {
-                val coords = it.pathGenerator?.getCurrentCoord(progress)
+                val coords = it.pathGenerator?.getCurrentCoord(progress, animator.duration)
                 it.x = it.initialX + (coords?.first ?: 0)
                 it.y = it.initialY + (coords?.second ?: 0)
 
