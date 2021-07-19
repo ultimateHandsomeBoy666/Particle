@@ -73,6 +73,8 @@ interface IParticleManager {
 
     fun pause()
 
+    fun cancel()
+
     fun show()
 
     fun hide()

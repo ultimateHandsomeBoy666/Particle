@@ -41,11 +41,15 @@ class ParticleAnimator(
         }
     }
 
-    fun start() {
+    internal fun start() {
         animator?.start()
     }
 
-    fun pause() {
+    internal fun pause() {
         animator?.pause()
+    }
+
+    internal fun cancel() {
+        animator?.cancel()
     }
 }

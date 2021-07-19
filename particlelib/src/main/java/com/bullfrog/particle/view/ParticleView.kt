@@ -117,6 +117,11 @@ internal class ParticleView @JvmOverloads constructor(
         pathAnimator?.pause()
     }
 
+    fun cancel() {
+        // TODO clear screen and reset particles
+        pathAnimator?.cancel()
+    }
+
     private fun generateParticle(): IParticle {
         val shape = shapeList[Random.nextInt(shapeList.size)]
         return when (shape) {

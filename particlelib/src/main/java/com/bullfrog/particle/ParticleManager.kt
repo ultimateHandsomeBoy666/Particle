@@ -156,6 +156,10 @@ internal class ParticleManager(
         particleView.pause()
     }
 
+    override fun cancel() {
+        particleView.cancel()
+    }
+
     override fun remove() {
         removeParticleView()
     }
