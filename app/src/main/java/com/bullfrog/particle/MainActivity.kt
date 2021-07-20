@@ -35,12 +35,12 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             particleManager!!.colorFromView(button)
-                .particleNum(300)
+                .particleNum(500)
                 .anchor(it)
-                .shape(Shape.CIRCLE, Shape.BITMAP)
-                .radius(8, 12)
-                .strokeWidth(10f)
-                .size(20, 20)
+                .shape(Shape.CIRCLE, Shape.HOLLOW_PENTACLE, Shape.HOLLOW_TRIANGLE)
+                .radius(8, 14)
+                .strokeWidth(2f)
+                .size(40, 40)
                 .rotation(Rotation(600))
                 .bitmap(R.drawable.ic_thumbs_up)
                 .anim(ParticleAnimation.with({
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
         val animator = ValueAnimator.ofInt(0, 1)
         animator.repeatCount = -1
         animator.repeatMode = ValueAnimator.REVERSE
-        animator.duration = 3000L
+        animator.duration = 4000L
         return animator
     }
 }
