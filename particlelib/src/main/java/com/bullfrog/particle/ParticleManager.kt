@@ -11,9 +11,9 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.drawToBitmap
 import com.bullfrog.particle.enum.Shape
-import com.bullfrog.particle.util.getColorFromBitmap
 import com.bullfrog.particle.view.ParticleView
 import com.bullfrog.particle.animation.ParticleAnimation
+import com.bullfrog.particle.extensions.getColorFromBitmap
 import com.bullfrog.particle.particle.Rotation
 
 internal class ParticleManager(
@@ -32,26 +32,26 @@ internal class ParticleManager(
     }
 
     override fun colorFromBitmap(bitmap: Bitmap, sampleNum: Int): IParticleManager {
-        particleView.colorMap = getColorFromBitmap(bitmap, sampleNum)
+        particleView.colorMap = bitmap.getColorFromBitmap(sampleNum)
         return this
     }
 
     override fun colorFromView(view: View, sampleNum: Int): IParticleManager {
         val bitmap = view.drawToBitmap()
-        particleView.colorMap = getColorFromBitmap(bitmap, sampleNum)
+        particleView.colorMap = bitmap.getColorFromBitmap(sampleNum)
         return this
     }
 
     override fun colorFromDrawable(drawable: Drawable, sampleNum: Int): IParticleManager {
         val bitmap = drawable.toBitmap()
-        particleView.colorMap = getColorFromBitmap(bitmap, sampleNum)
+        particleView.colorMap = bitmap.getColorFromBitmap(sampleNum)
         return this
     }
 
     override fun colorFromDrawable(drawable: Int, sampleNum: Int): IParticleManager {
         val bitmap = ResourcesCompat.getDrawable(context.resources, drawable, null)?.toBitmap()
         bitmap?.let {
-            particleView.colorMap = getColorFromBitmap(it, sampleNum)
+            particleView.colorMap = bitmap.getColorFromBitmap(sampleNum)
         }
         return this
     }

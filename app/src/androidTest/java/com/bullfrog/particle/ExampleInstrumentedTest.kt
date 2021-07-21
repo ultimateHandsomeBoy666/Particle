@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory
 import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.bullfrog.particle.extensions.getColorFromBitmap
 import com.bullfrog.particle.util.getColorFromBitmap
 
 import org.junit.Test
@@ -33,11 +34,10 @@ class ExampleInstrumentedTest {
     @Test
     fun bitmap_color_sampling() {
         val bitmap = BitmapFactory.decodeResource(getAppContext().resources, R.drawable.button)
-        val map = getColorFromBitmap(bitmap, 100)
+        val map = bitmap.getColorFromBitmap(100)
         var total = 0f
         map.values.forEach {
             total += it
         }
-        Log.d("testbitmap", getColorFromBitmap(bitmap, 100).toString() + ", total = $total")
     }
 }
