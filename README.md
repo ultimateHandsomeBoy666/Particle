@@ -21,6 +21,8 @@ dependencies {
 }
 ```
 
+<br/>
+
 And add the following code:
 ```kotlin
 Particles.with(context, container) // container is the parent ViewGroup
