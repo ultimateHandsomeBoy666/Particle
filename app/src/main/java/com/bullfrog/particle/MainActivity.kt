@@ -37,9 +37,9 @@ class MainActivity : AppCompatActivity() {
             particleManager!!.colorFromView(button)
                 .particleNum(500)
                 .anchor(it)
-                .shape(Shape.CIRCLE, Shape.HOLLOW_PENTACLE, Shape.HOLLOW_TRIANGLE)
+                .shape(Shape.CIRCLE, Shape.HOLLOW_RECTANGLE)
                 .radius(8, 14)
-                .strokeWidth(2f)
+                .strokeWidth(8f)
                 .size(40, 40)
                 .rotation(Rotation(600))
                 .bitmap(R.drawable.ic_thumbs_up)
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                 val originalY = 100 * sin(originalX / 50)
                 val x = originalX * cos - originalY * sin
                 val y = originalX * sin + originalY * cos
-                return Pair((0.01 * x * originalY).toInt(), (0.008 * y * originalX).toInt())
+                return Pair((0.01 * x * originalY).toInt(), -(0.0001 * y.pow(2) * originalX).toInt())
             }
         }
     }
