@@ -1,4 +1,5 @@
 # particle
+[中文介绍](https://juejin.cn/post/6986667003884863519)
 
 This is a handy android library for particle effect.
 
