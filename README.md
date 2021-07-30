@@ -1,4 +1,7 @@
 # particle
+
+[![](https://jitpack.io/v/ultimateHandsomeBoy666/Particle.svg)](https://jitpack.io/#ultimateHandsomeBoy666/Particle)
+
 [中文介绍](https://juejin.cn/post/6986667003884863519)
 
 This is a handy android library for particle effect.
