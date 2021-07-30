@@ -1,5 +1,6 @@
 package com.bullfrog.particle.particle.impl
 
+import android.graphics.Camera
 import android.graphics.Canvas
 import android.graphics.Matrix
 import android.graphics.Paint
@@ -19,11 +20,18 @@ class BitmapParticle : IParticle {
 
     override var y: Int = 0
 
-    override var angle: Float = 0f
+    override var angleX: Float = 0f
+
+    override var angleY: Float = 0f
+
+    override var angleZ: Float = 0f
 
     override var pathGenerator: IPathGenerator? = null
 
     private var matrix = Matrix()
+
+    // for rotation with camera
+    private var matrix2 = Matrix()
 
     private var xScale = 1f
 
@@ -37,15 +45,28 @@ class BitmapParticle : IParticle {
         }
     }
 
-    override fun draw(canvas: Canvas, paint: Paint) {
+    override fun draw(canvas: Canvas, paint: Paint, camera: Camera) {
         val bitmap = configuration!!.bitmap
         bitmap?.let {
             matrix.reset()
+            matrix2.reset()
+
+            camera.save()
+            camera.rotateX(angleX)
+            camera.rotateY(angleY)
+            camera.getMatrix(matrix2)
+            matrix2.preTranslate(-it.width / 2f, -it.height / 2f)
+            matrix2.postTranslate(it.width / 2f, it.height / 2f)
+            camera.restore()
+
             matrix.postTranslate(-it.width / 2f, -it.height / 2f)
             matrix.postScale(xScale, yScale)
             matrix.postTranslate(x.toFloat(), y.toFloat())
-            matrix.postRotate(angle, x.toFloat(), y.toFloat())
-            canvas.drawBitmap(it, matrix, paint)
+            matrix.postRotate(angleZ, x.toFloat(), y.toFloat())
+
+            matrix2.postConcat(matrix)
+
+            canvas.drawBitmap(it, matrix2, paint)
         }
     }
 }

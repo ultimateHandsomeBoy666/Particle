@@ -33,9 +33,17 @@ class ParticleAnimator(
                 it.x = it.initialX + (coords?.first ?: 0)
                 it.y = it.initialY + (coords?.second ?: 0)
 
-                val rotation = it.configuration!!.rotation
-                val sign = if (rotation.rotationDirection == RotationDirection.ClockWise) 1 else -1
-                it.angle = sign * rotation.angularVelocity * duration * progress / 1000f
+                val rotationX = it.configuration!!.rotationX
+                val signX = if (rotationX.rotationDirection == RotationDirection.ClockWise) 1 else -1
+                it.angleX = signX * rotationX.angularVelocityX * duration * progress / 1000f
+
+                val rotationY = it.configuration!!.rotationY
+                val signY = if (rotationY.rotationDirection == RotationDirection.ClockWise) 1 else -1
+                it.angleY = signY * rotationY.angularVelocityY * duration * progress / 1000f
+
+                val rotationZ = it.configuration!!.rotationZ
+                val signZ = if (rotationZ.rotationDirection == RotationDirection.ClockWise) 1 else -1
+                it.angleZ = signZ * rotationZ.angularVelocityZ * duration * progress / 1000f
             }
         }
     }

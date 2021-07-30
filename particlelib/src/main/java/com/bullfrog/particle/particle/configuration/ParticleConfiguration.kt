@@ -16,7 +16,11 @@ const val DEFAULT_HEIGHT = 10
 
 val DEFAULT_SHAPE = Shape.CIRCLE
 
-val ROTATION_NONE = Rotation()
+val ROTATION_X_NONE = RotationX()
+
+val ROTATION_Y_NONE = RotationY()
+
+val ROTATION_Z_NONE = RotationZ()
 
 class ParticleConfiguration {
 
@@ -31,7 +35,11 @@ class ParticleConfiguration {
 
    internal var shimmer: Boolean = false
 
-   internal var rotation: Rotation = ROTATION_NONE
+   internal var rotationX: RotationX = ROTATION_X_NONE
+
+   internal var rotationY: RotationY = ROTATION_Y_NONE
+
+   internal var rotationZ: RotationZ = ROTATION_Z_NONE
 
    // CIRCLE
    internal var radius: Float = DEFAULT_RADIUS

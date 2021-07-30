@@ -138,8 +138,8 @@ internal class ParticleManager(
         return this
     }
 
-    override fun rotation(rotation: Rotation): IParticleManager {
-        particleView.rotation = rotation
+    override fun rotation(vararg rotation: Rotation): IParticleManager {
+        particleView.rotationList = rotation.toMutableList()
         return this
     }
 

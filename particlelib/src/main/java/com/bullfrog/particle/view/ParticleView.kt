@@ -2,6 +2,7 @@ package com.bullfrog.particle.view
 
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Camera
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
@@ -9,6 +10,10 @@ import android.view.View
 import com.bullfrog.particle.animator.ParticleAnimator
 import com.bullfrog.particle.particle.configuration.Shape
 import com.bullfrog.particle.animation.ParticleAnimation
+import com.bullfrog.particle.particle.configuration.Rotation
+import com.bullfrog.particle.particle.configuration.RotationX
+import com.bullfrog.particle.particle.configuration.RotationY
+import com.bullfrog.particle.particle.configuration.RotationZ
 import com.bullfrog.particle.particle.*
 import com.bullfrog.particle.particle.configuration.*
 import com.bullfrog.particle.particle.impl.*
@@ -33,9 +38,9 @@ internal class ParticleView @JvmOverloads constructor(
     }
 
     // key: color int; value: color portion
-    var colorMap = mutableMapOf<@androidx.annotation.ColorInt Int, Float>()
+    var colorMap: MutableMap<Int, Float> = mutableMapOf()
 
-    var shapeList = mutableListOf<Shape>()
+    var shapeList: MutableList<Shape> = mutableListOf()
 
     var mParticles: MutableList<IParticle> = mutableListOf()
 
@@ -49,7 +54,7 @@ internal class ParticleView @JvmOverloads constructor(
 
     var shimmer: Boolean = false
 
-    var rotation: Rotation = ROTATION_NONE
+    var rotationList: MutableList<Rotation> = mutableListOf()
 
     var widthSize: Int = DEFAULT_WIDTH
 
@@ -71,13 +76,16 @@ internal class ParticleView @JvmOverloads constructor(
 
     var bitmap: Bitmap? = null
 
+    // draw
     var paint: Paint = Paint()
+
+    var camera: Camera = Camera()
 
     var pathAnimator: ParticleAnimator? = null
 
     override fun onDraw(canvas: Canvas) {
         mParticles.forEach {
-            it.draw(canvas, paint)
+            it.draw(canvas, paint, camera)
         }
         invalidate()
     }
@@ -233,7 +241,13 @@ internal class ParticleView @JvmOverloads constructor(
     }
 
     private fun configureRotation(particle: IParticle) {
-        particle.configuration!!.rotation = rotation
+        rotationList.forEach {
+            when (it) {
+                is RotationX -> particle.configuration!!.rotationX = it
+                is RotationY -> particle.configuration!!.rotationY = it
+                is RotationZ -> particle.configuration!!.rotationZ = it
+            }
+        }
     }
 
     private fun configureRandomSize(particle: IParticle) {

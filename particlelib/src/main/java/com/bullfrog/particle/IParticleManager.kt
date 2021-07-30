@@ -60,7 +60,7 @@ interface IParticleManager {
 
     // region effect
 
-    fun rotation(rotation: Rotation): IParticleManager
+    fun rotation(vararg rotation: Rotation): IParticleManager
 
     // fun shimmer(): IParticleManager
 

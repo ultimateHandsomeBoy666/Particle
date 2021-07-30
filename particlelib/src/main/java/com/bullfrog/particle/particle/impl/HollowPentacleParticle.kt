@@ -1,9 +1,6 @@
 package com.bullfrog.particle.particle.impl
 
-import android.graphics.Canvas
-import android.graphics.Matrix
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import com.bullfrog.particle.particle.IParticle
 import com.bullfrog.particle.particle.configuration.ParticleConfiguration
 import com.bullfrog.particle.path.IPathGenerator
@@ -23,13 +20,19 @@ class HollowPentacleParticle : IParticle {
 
     override var y: Int = 0
 
-    override var angle: Float = 0f
+    override var angleX: Float = 0f
+
+    override var angleY: Float = 0f
+
+    override var angleZ: Float = 0f
 
     override var pathGenerator: IPathGenerator? = null
 
     private val path: Path = Path()
 
     private val matrix = Matrix()
+
+    private val matrix2: Matrix = Matrix()
 
     private val sin1 = sin(PI / 5f).toFloat()
     private val cos1 = cos(PI / 5f).toFloat()
@@ -66,13 +69,24 @@ class HollowPentacleParticle : IParticle {
         innerRadius = radius * cos1 - radius * sin1 * sin1 / cos1
     }
 
-    override fun draw(canvas: Canvas, paint: Paint) {
+    override fun draw(canvas: Canvas, paint: Paint, camera: Camera) {
         paint.color = configuration!!.color
         paint.style = Paint.Style.STROKE
         paint.strokeWidth = configuration!!.strokeWidth
         val radius = configuration!!.radius
+
         matrix.reset()
-        matrix.postRotate(angle, x.toFloat(), y.toFloat())
+        matrix2.reset()
+
+        camera.save()
+        camera.rotateX(angleX)
+        camera.rotateY(angleY)
+        camera.getMatrix(matrix2)
+        matrix2.preTranslate(-x.toFloat(), -y.toFloat())
+        matrix2.postTranslate(x.toFloat(), y.toFloat())
+        camera.restore()
+
+        matrix.postRotate(angleZ, x.toFloat(), y.toFloat())
         path.reset()
         path.moveTo(x.toFloat(), y - radius)
         path.lineTo(x + innerRadius * sin1, y - innerRadius * cos1)
@@ -85,7 +99,9 @@ class HollowPentacleParticle : IParticle {
         path.lineTo(x + radius * sin8, y - radius * cos8)
         path.lineTo(x + innerRadius * sin9, y - innerRadius * cos9)
         path.close()
-        path.transform(matrix)
+
+        matrix2.postConcat(matrix)
+        path.transform(matrix2)
         canvas.drawPath(path, paint)
     }
 }

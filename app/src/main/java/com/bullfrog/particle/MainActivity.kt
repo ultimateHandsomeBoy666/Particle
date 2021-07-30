@@ -10,6 +10,9 @@ import android.widget.TextView
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.particle.configuration.Shape
 import com.bullfrog.particle.particle.configuration.Rotation
+import com.bullfrog.particle.particle.configuration.RotationX
+import com.bullfrog.particle.particle.configuration.RotationY
+
 import com.bullfrog.particle.path.*
 import kotlin.math.*
 import kotlin.random.Random
@@ -35,22 +38,17 @@ class MainActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             particleManager!!.colorFromView(button)
-                .particleNum(500)
+                .particleNum(100)
                 .anchor(it)
-                .shape(Shape.CIRCLE, Shape.HOLLOW_RECTANGLE)
-                .radius(8, 14)
-                .strokeWidth(8f)
+                .shape(Shape.HOLLOW_CIRCLE)
+                .radius(18, 24)
+                .rotation(RotationY(600))
+                .strokeWidth(12f)
                 .size(40, 40)
-                .rotation(
-                    Rotation(
-                        600
-                    )
-                )
-                .bitmap(R.drawable.ic_thumbs_up)
                 .anim(ParticleAnimation.with({
                     createAnimator()
                 }, {
-                    createPathGenerator()
+                    LinearPathGenerator()
                 }))
             particleManager!!.start()
             button.visibility = View.GONE
@@ -81,7 +79,7 @@ class MainActivity : AppCompatActivity() {
         val animator = ValueAnimator.ofInt(0, 1)
         animator.repeatCount = -1
         animator.repeatMode = ValueAnimator.REVERSE
-        animator.duration = 4000L
+        animator.duration = 10000L
         return animator
     }
 }

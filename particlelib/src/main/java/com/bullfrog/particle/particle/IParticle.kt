@@ -1,5 +1,6 @@
 package com.bullfrog.particle.particle
 
+import android.graphics.Camera
 import android.graphics.Canvas
 import android.graphics.Paint
 import com.bullfrog.particle.particle.configuration.ParticleConfiguration
@@ -15,7 +16,11 @@ interface IParticle {
 
     var y: Int
 
-    var angle: Float
+    var angleX: Float
+
+    var angleY: Float
+
+    var angleZ: Float
 
     //var alpha: Int
 
@@ -23,7 +28,7 @@ interface IParticle {
 
     var pathGenerator: IPathGenerator?
 
-    fun draw(canvas: Canvas, paint: Paint)
+    fun draw(canvas: Canvas, paint: Paint, camera: Camera)
 
     fun initAfterConfigure() {
 
