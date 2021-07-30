@@ -1,4 +1,4 @@
-package com.bullfrog.particle.enum
+package com.bullfrog.particle.particle.configuration
 
 enum class Shape {
     CIRCLE,

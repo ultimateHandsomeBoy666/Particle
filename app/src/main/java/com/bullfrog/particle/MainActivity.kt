@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.bullfrog.particle.animation.ParticleAnimation
-import com.bullfrog.particle.enum.Shape
-import com.bullfrog.particle.particle.Rotation
+import com.bullfrog.particle.particle.configuration.Shape
+import com.bullfrog.particle.particle.configuration.Rotation
 import com.bullfrog.particle.path.*
 import kotlin.math.*
 import kotlin.random.Random
@@ -41,7 +41,11 @@ class MainActivity : AppCompatActivity() {
                 .radius(8, 14)
                 .strokeWidth(8f)
                 .size(40, 40)
-                .rotation(Rotation(600))
+                .rotation(
+                    Rotation(
+                        600
+                    )
+                )
                 .bitmap(R.drawable.ic_thumbs_up)
                 .anim(ParticleAnimation.with({
                     createAnimator()

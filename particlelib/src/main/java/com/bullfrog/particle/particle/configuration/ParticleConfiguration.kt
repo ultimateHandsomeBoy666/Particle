@@ -1,10 +1,7 @@
-package com.bullfrog.particle.particle
+package com.bullfrog.particle.particle.configuration
 
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.util.Size
-import com.bullfrog.particle.enum.Shape
 
 
 const val DEFAULT_COLOR = Color.GREEN

@@ -10,11 +10,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.core.view.drawToBitmap
-import com.bullfrog.particle.enum.Shape
+import com.bullfrog.particle.particle.configuration.Shape
 import com.bullfrog.particle.view.ParticleView
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.extensions.getColorFromBitmap
-import com.bullfrog.particle.particle.Rotation
+import com.bullfrog.particle.particle.configuration.Rotation
 
 internal class ParticleManager(
     private val context: Context,

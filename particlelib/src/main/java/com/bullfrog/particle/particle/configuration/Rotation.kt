@@ -1,4 +1,4 @@
-package com.bullfrog.particle.particle
+package com.bullfrog.particle.particle.configuration
 
 enum class RotationDirection {
     ClockWise,

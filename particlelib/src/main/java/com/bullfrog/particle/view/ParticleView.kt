@@ -4,13 +4,13 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
 import com.bullfrog.particle.animator.ParticleAnimator
-import com.bullfrog.particle.enum.Shape
+import com.bullfrog.particle.particle.configuration.Shape
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.particle.*
+import com.bullfrog.particle.particle.configuration.*
 import com.bullfrog.particle.particle.impl.*
 import kotlin.random.Random
 

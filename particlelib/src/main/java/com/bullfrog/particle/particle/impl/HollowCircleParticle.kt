@@ -3,6 +3,7 @@ package com.bullfrog.particle.particle.impl
 import android.graphics.Canvas
 import android.graphics.Paint
 import com.bullfrog.particle.particle.*
+import com.bullfrog.particle.particle.configuration.ParticleConfiguration
 import com.bullfrog.particle.path.IPathGenerator
 
 class HollowCircleParticle : IParticle {

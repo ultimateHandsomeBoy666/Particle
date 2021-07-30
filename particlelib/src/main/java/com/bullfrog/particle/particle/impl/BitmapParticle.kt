@@ -3,9 +3,8 @@ package com.bullfrog.particle.particle.impl
 import android.graphics.Canvas
 import android.graphics.Matrix
 import android.graphics.Paint
-import android.util.Log
 import com.bullfrog.particle.particle.IParticle
-import com.bullfrog.particle.particle.ParticleConfiguration
+import com.bullfrog.particle.particle.configuration.ParticleConfiguration
 import com.bullfrog.particle.path.IPathGenerator
 
 class BitmapParticle : IParticle {

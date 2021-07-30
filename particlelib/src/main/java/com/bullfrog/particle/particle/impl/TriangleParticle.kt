@@ -2,7 +2,7 @@ package com.bullfrog.particle.particle.impl
 
 import android.graphics.*
 import com.bullfrog.particle.particle.IParticle
-import com.bullfrog.particle.particle.ParticleConfiguration
+import com.bullfrog.particle.particle.configuration.ParticleConfiguration
 import com.bullfrog.particle.path.IPathGenerator
 
 class TriangleParticle : IParticle {

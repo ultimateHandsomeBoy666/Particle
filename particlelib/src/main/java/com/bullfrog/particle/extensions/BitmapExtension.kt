@@ -14,7 +14,6 @@ fun Bitmap.getColorFromBitmap(sampleNum: Int): MutableMap<Int, Float> {
         throw Exception("Sample num exceed bitmap pixels num!")
     }
 
-
     val scale = sqrt(sampleNum.toDouble())
     val heightStep = (height / scale).toInt().coerceAtLeast(1)
     val widthStep = (width / scale).toInt().coerceAtLeast(1)

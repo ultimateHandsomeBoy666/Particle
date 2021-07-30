@@ -2,13 +2,12 @@ package com.bullfrog.particle
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
-import android.graphics.drawable.VectorDrawable
 import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
-import com.bullfrog.particle.enum.Shape
+import com.bullfrog.particle.particle.configuration.Shape
 import com.bullfrog.particle.animation.ParticleAnimation
-import com.bullfrog.particle.particle.Rotation
+import com.bullfrog.particle.particle.configuration.Rotation
 
 interface IParticleManager {
 

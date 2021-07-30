@@ -3,8 +3,7 @@ package com.bullfrog.particle.animator
 import android.animation.ValueAnimator
 import com.bullfrog.particle.particle.IParticle
 import com.bullfrog.particle.animation.ParticleAnimation
-import com.bullfrog.particle.particle.Rotation
-import com.bullfrog.particle.particle.RotationDirection
+import com.bullfrog.particle.particle.configuration.RotationDirection
 
 class ParticleAnimator(
         private val IParticles: List<IParticle>,

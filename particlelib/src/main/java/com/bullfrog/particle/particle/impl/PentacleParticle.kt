@@ -5,11 +5,10 @@ import android.graphics.Matrix
 import android.graphics.Paint
 import android.graphics.Path
 import com.bullfrog.particle.particle.IParticle
-import com.bullfrog.particle.particle.ParticleConfiguration
+import com.bullfrog.particle.particle.configuration.ParticleConfiguration
 import com.bullfrog.particle.path.IPathGenerator
 import kotlin.math.PI
 import kotlin.math.cos
-import kotlin.math.max
 import kotlin.math.sin
 
 class PentacleParticle : IParticle {
