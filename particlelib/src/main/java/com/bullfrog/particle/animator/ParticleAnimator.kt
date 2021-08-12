@@ -6,8 +6,8 @@ import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.particle.configuration.RotationDirection
 
 class ParticleAnimator(
-        private val IParticles: List<IParticle>,
-        private val animation: ParticleAnimation
+    private val paticles: List<IParticle>,
+    private val animation: ParticleAnimation
 ) {
 
     private var animator: ValueAnimator? = null
@@ -18,7 +18,7 @@ class ParticleAnimator(
     }
 
     private fun initPathGenerators() {
-        IParticles.forEach {
+        paticles.forEach {
             it.pathGenerator = animation.createPathGenerator()
         }
     }
@@ -28,7 +28,7 @@ class ParticleAnimator(
         val duration = animator!!.duration
         animator!!.addUpdateListener { animator ->
             val progress = animator.animatedFraction
-            IParticles.forEach {
+            paticles.forEach {
                 val coords = it.pathGenerator?.getCurrentCoord(progress, duration)
                 it.x = it.initialX + (coords?.first ?: 0)
                 it.y = it.initialY + (coords?.second ?: 0)
