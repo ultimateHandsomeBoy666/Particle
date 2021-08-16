@@ -23,10 +23,11 @@ open class FireWorkPathGenerator : IPathGenerator {
         initVelocityY = initVelocity * sin(theta)
     }
 
-    override fun getCurrentCoord(progress: Float, duration: Long): Pair<Int, Int> {
+    override fun getCurrentCoord(progress: Float, duration: Long, outCoord: IntArray): Unit {
         val t = duration * progress / 1000
         val x = initVelocityX * t
         val y = initVelocityY * t - 0.5f * gravity * t.pow(2)
-        return Pair(x.toInt(), -y.toInt())
+        outCoord[0] = x.toInt()
+        outCoord[1] = -y.toInt()
     }
 }

@@ -11,10 +11,11 @@ open class LinearPathGenerator: IPathGenerator {
 
     open val theta = Random.nextDouble(2 * PI)
 
-    override fun getCurrentCoord(progress: Float, duration: Long): Pair<Int, Int> {
+    override fun getCurrentCoord(progress: Float, duration: Long, outCoord: IntArray): Unit {
         val coordX = distance * progress * cos(theta)
         val coordY = distance * progress * sin(theta)
-        return Pair(coordX.toInt(), coordY.toInt())
+        outCoord[0] = coordX.toInt()
+        outCoord[1] = coordY.toInt()
     }
 
 }
