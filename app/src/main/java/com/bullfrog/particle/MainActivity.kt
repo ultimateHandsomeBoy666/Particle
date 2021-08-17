@@ -67,12 +67,17 @@ class MainActivity : AppCompatActivity() {
             val cos = Random.nextDouble(-1.0, 1.0)
             val sin = Random.nextDouble(-1.0, 1.0)
 
-            override fun getCurrentCoord(progress: Float, duration: Long): Pair<Int, Int> {
+            override fun getCurrentCoord(
+                progress: Float,
+                duration: Long,
+                outCoord: IntArray
+            ): Unit {
                 val originalX = distance * progress
                 val originalY = 100 * sin(originalX / 50)
                 val x = originalX * cos - originalY * sin
                 val y = originalX * sin + originalY * cos
-                return Pair((0.01 * x * originalY).toInt(), -(0.0001 * y.pow(2) * originalX).toInt())
+                outCoord[0] = (0.01 * x * originalY).toInt()
+                outCoord[1] = -(0.0001 * y.pow(2) * originalX).toInt()
             }
         }
     }

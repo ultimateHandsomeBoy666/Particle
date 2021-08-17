@@ -8,8 +8,9 @@ open class FallPathGenerator : LinearPathGenerator() {
 
     open val x = Random.nextInt(-300, 300)
 
-    override fun getCurrentCoord(progress: Float, duration: Long): Pair<Int, Int> {
+    override fun getCurrentCoord(progress: Float, duration: Long, outCoord: IntArray): Unit {
         val coordY = progress * distance
-        return Pair(x, coordY.toInt())
+        outCoord[0] = x
+        outCoord[1] = coordY.toInt()
     }
 }

@@ -26,12 +26,13 @@ class ParticleAnimator(
     private fun initAnimator() {
         animator = animation.createAnimator()
         val duration = animator!!.duration
+        val coords = IntArray(2)
         animator!!.addUpdateListener { animator ->
             val progress = animator.animatedFraction
             paticles.forEach {
-                val coords = it.pathGenerator?.getCurrentCoord(progress, duration)
-                it.x = it.initialX + (coords?.first ?: 0)
-                it.y = it.initialY + (coords?.second ?: 0)
+                it.pathGenerator?.getCurrentCoord(progress, duration, coords)
+                it.x = it.initialX + coords[0]
+                it.y = it.initialY + coords[1]
 
                 val rotation = it.configuration!!.rotation
                 val sign = if (rotation.rotationDirection == RotationDirection.ClockWise) 1 else -1
