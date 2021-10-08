@@ -5,6 +5,9 @@ import com.bullfrog.particle.particle.IParticle
 import com.bullfrog.particle.animation.ParticleAnimation
 import com.bullfrog.particle.particle.configuration.RotationDirection
 
+/**
+ * Core class that draws the particle motion tracks.
+ */
 class ParticleAnimator(
     private val paticles: List<IParticle>,
     private val animation: ParticleAnimation

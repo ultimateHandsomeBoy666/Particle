@@ -5,6 +5,9 @@ import android.graphics.Paint
 import com.bullfrog.particle.particle.configuration.ParticleConfiguration
 import com.bullfrog.particle.path.IPathGenerator
 
+/**
+ * This interface defines what basic attributes a particle should have.
+ */
 interface IParticle {
 
     var initialX: Int

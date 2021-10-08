@@ -1,11 +1,12 @@
 package com.bullfrog.particle.animation
 
 import android.animation.ValueAnimator
-import android.renderscript.Sampler
 import android.view.animation.AccelerateDecelerateInterpolator
 import com.bullfrog.particle.path.*
-import kotlin.random.Random
 
+/**
+ * Helper class for particle motion paths and animations.
+ */
 class ParticleAnimation private constructor(
         private val pathGenerator: () -> IPathGenerator,
         private val animator: () -> ValueAnimator = DEFAULT_ANIMATOR_LAMBDA

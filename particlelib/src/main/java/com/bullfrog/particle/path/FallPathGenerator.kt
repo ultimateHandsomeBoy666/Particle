@@ -2,6 +2,9 @@ package com.bullfrog.particle.path
 
 import kotlin.random.Random
 
+/**
+ * All particles fall down.
+ */
 open class FallPathGenerator : LinearPathGenerator() {
 
     override var distance = Random.nextInt(800)

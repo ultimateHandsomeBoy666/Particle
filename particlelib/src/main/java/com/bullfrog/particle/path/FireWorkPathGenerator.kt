@@ -6,6 +6,9 @@ import kotlin.math.pow
 import kotlin.math.sin
 import kotlin.random.Random
 
+/**
+ * Particles explode like firework.
+ */
 open class FireWorkPathGenerator : IPathGenerator {
 
     open var gravity = 1000

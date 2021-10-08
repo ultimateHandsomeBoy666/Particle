@@ -1,5 +1,8 @@
 package com.bullfrog.particle.particle.configuration
 
+/**
+ * All particle shapes.
+ */
 enum class Shape {
     CIRCLE,
     HOLLOW_CIRCLE,

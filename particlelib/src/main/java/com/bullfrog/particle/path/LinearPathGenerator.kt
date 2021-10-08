@@ -5,6 +5,9 @@ import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.random.Random
 
+/**
+ * All particles move in different straight ways.
+ */
 open class LinearPathGenerator: IPathGenerator {
 
     open var distance = Random.nextInt( 150, 800)

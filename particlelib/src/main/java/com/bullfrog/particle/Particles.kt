@@ -3,6 +3,9 @@ package com.bullfrog.particle
 import android.content.Context
 import android.view.ViewGroup
 
+/**
+ * Util class for user to initialize particle animation chain.
+ */
 class Particles {
 
     companion object {
