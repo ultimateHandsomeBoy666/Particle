@@ -1,6 +1,6 @@
 # particle
 
-[![](https://jitpack.io/v/ultimateHandsomeBoy666/Particle.svg)](https://jitpack.io/#ultimateHandsomeBoy666/Particle)
+[![](https://jitpack.io/v/ultimateHandsomeBoy666/particle.svg)](https://jitpack.io/#ultimateHandsomeBoy666/particle)
 
 [中文介绍](https://juejin.cn/post/6986667003884863519)
 
@@ -21,7 +21,7 @@ Then add the dependency
 
 ```groovy
 dependencies {
-	implementation 'com.github.ultimateHandsomeBoy666:Particle:0.1.1'
+	implementation 'com.github.ultimateHandsomeBoy666:Particle:0.1.2'
 }
 ```
 
